@@ -1,4 +1,6 @@
 import os
+
+from matplotlib import pyplot as plt
 import cv2
 import time
 import re
@@ -8,13 +10,13 @@ YY = time.strftime("%Y")[-2:]
 MM = time.strftime("%m")
 DD = time.strftime("%d")
 NAME_BATCH = "batch_%s%s%s" % (YY, MM, DD)
-N_FRAME = 60
+N_FRAME = 30
 
 # constants
 ROOT = os.path.dirname(os.path.dirname(__file__))
 DIR_SRC = os.path.join(ROOT, "modules", "ring_capture", "out")
-DIR_BATCH = os.path.join(DIR_SRC, NAME_BATCH)
 DIR_OUT = os.path.join(ROOT, "data", "cow200", "_images")
+DIR_BATCH = os.path.join(DIR_SRC, NAME_BATCH)
 
 
 # main
@@ -23,7 +25,6 @@ def main():
     if not result:
         print("No new videos to process")
         exit()
-
     rm_incomplete_videos(DIR_SRC)
     mv_videos_to_batch(DIR_SRC, DIR_BATCH)
     n_batch = get_n_batch(DIR_OUT)
@@ -33,15 +34,16 @@ def main():
         name_img = "img_%d_%d.jpg" % (n_batch, i)
         path_mp4 = os.path.join(DIR_BATCH, name_mp4)
         path_img = os.path.join(DIR_OUT, name_img)
-
         # read and write video
+        frame = get_frame(path_mp4, N_FRAME)
+        if frame is None:
+            frame = get_frame(path_mp4, int(N_FRAME / 2))
+        elif frame is None:
+            frame = get_frame(path_mp4, 1)
         try:
-            frame = get_frame(path_mp4, N_FRAME)
             cv2.imwrite(path_img, frame)
         except:
-            frame = get_frame(path_mp4, 15)
-            cv2.imwrite(path_img, frame)
-            print("Failed to write %s, use first frame instead" % name_mp4)
+            print("Failed to write %s" % name_mp4)
     print("Wrote %d images to %s" % (len(ls_mp4), DIR_OUT))
 
 
@@ -90,8 +92,18 @@ def get_frame(path_mp4, n_frame):
     return frame
 
 
-def write_image(path_img, frame):
-    cv2.imwrite(path_img, frame)
+def get_mp4_id(dir):
+    """
+    Get all mp4 id in a directory
+    Example:
+        input:  Niche Camera Black_1688414079227_0.mp4
+        output: Niche Camera Black_1688414079227
+    """
+    ls_id = [f[:-6] for f in os.listdir(dir) if f.endswith(".mp4")]
+    # drop duplicates
+    ls_id = list(set(ls_id))
+    # return
+    return ls_id
 
 
 if __name__ == "__main__":

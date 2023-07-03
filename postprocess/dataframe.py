@@ -10,14 +10,23 @@ ROOT = os.path.dirname(os.path.dirname(__file__))
 DIR_VAL = os.path.join(ROOT, "out", "val")
 PATH_OUT = os.path.join(ROOT, "out", "result.csv")
 
+
 def main():
     ls_trials = os.listdir(DIR_VAL)
     df_out = pd.DataFrame(
         columns=[
-            "map5095", "map50",
-            "precision", "recall", "f1",
-            "n_all", "n_missed", "n_false",
-            "size", "model", "iter"]
+            "map5095",
+            "map50",
+            "precision",
+            "recall",
+            "f1",
+            "n_all",
+            "n_missed",
+            "n_false",
+            "size",
+            "model",
+            "iter",
+        ]
     )
     for t in ls_trials:
         dir_trial = os.path.join(DIR_VAL, t)

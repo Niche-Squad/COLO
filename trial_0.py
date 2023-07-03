@@ -31,6 +31,7 @@ DIR_COW200 = os.path.join(DIR_DATA, "cow200", "yolov5")
 BATCH = 16
 EPOCHS = 100
 
+
 def main(args):
     # parse arguments
     i = args.iter
@@ -55,7 +56,7 @@ def main(args):
         path_model=os.path.join(DIR_MODEL, yolo_base),
         dir_train=os.path.join(DIR_OUT, "train"),
         dir_val=os.path.join(DIR_OUT, "val"),
-        name_task=name_task
+        name_task=name_task,
     )
 
     # train
