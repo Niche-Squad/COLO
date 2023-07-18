@@ -46,3 +46,4 @@ modules/
 # exception
 !**/demo/**
 !requirements.txt
+!modules/ring_capture/packages/**

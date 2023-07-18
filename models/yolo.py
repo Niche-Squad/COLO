@@ -11,12 +11,28 @@ ROOT = os.path.dirname(os.path.dirname(__file__))
 
 
 class Niche_YOLO:
-    def __init__(self, path_model, dir_train, dir_val, name_task=""):
+    def __init__(self, path_model, dir_out, name_task=""):
+        """
+        Folder structure
+        models/
+            <path_model>.pt
+        out/
+            train/
+                <name_task>/
+                    weights/
+                        best.pt
+                    ...
+            val/
+                <name_task>/
+                    results.json
+                    ...
+
+        """
         # attributes
         self.model = None
-        self.dir_train = dir_train  # out/train
-        self.dir_val = dir_val  # out/val
-        self.name_task = name_task  # suffix for folder name
+        self.dir_train = os.path.join(dir_out, "train")
+        self.dir_val = os.path.join(dir_out, "val")
+        self.name_task = name_task  # task folder name
 
         # init
         self.load(path_model)

@@ -54,8 +54,7 @@ def main(args):
     # configure model
     yolo = Niche_YOLO(
         path_model=os.path.join(DIR_MODEL, yolo_base),
-        dir_train=os.path.join(DIR_OUT, "train"),
-        dir_val=os.path.join(DIR_OUT, "val"),
+        dir_out=DIR_OUT,
         name_task=name_task,
     )
 

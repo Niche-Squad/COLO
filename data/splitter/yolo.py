@@ -45,10 +45,21 @@ class YOLO_Splitter(Splitter):
         self.path_yaml = None
         # copy images and labels
         if not os.path.exists(os.path.join(path_root, suffix, "images")):
-            pathlib.Path(os.path.join(path_root, suffix)).mkdir(parents=True, exist_ok=True)
-            shutil.copytree(os.path.join(path_root, "images"), os.path.join(path_root, suffix, "images"))
-            shutil.copytree(os.path.join(path_root, "labels"), os.path.join(path_root, suffix, "labels"))
-            shutil.copy(os.path.join(path_root, "test.txt"), os.path.join(path_root, suffix, "test.txt"))
+            pathlib.Path(os.path.join(path_root, suffix)).mkdir(
+                parents=True, exist_ok=True
+            )
+            shutil.copytree(
+                os.path.join(path_root, "images"),
+                os.path.join(path_root, suffix, "images"),
+            )
+            shutil.copytree(
+                os.path.join(path_root, "labels"),
+                os.path.join(path_root, suffix, "labels"),
+            )
+            shutil.copy(
+                os.path.join(path_root, "test.txt"),
+                os.path.join(path_root, suffix, "test.txt"),
+            )
         self.path_root = os.path.join(path_root, suffix)
         super().__init__(self.path_root, ratio_train, ratio_val, ratio_test)
 
@@ -87,8 +98,8 @@ class YOLO_Splitter(Splitter):
         # get test ids from txt
         path_txt = os.path.join(self.path_root, "test.txt")
         with open(path_txt, "r") as f:
-            id_test = f.read().splitlines()        
-        id_test = [i[:-4] for i in id_test] # 001.jpg -> 001
+            id_test = f.read().splitlines()
+        id_test = [i[:-4] for i in id_test]  # 001.jpg -> 001
         # obtain which ids are to be shuffled
         id_remaining = [f for f in self.ids if f not in id_test]
         random.shuffle(id_remaining)
@@ -107,7 +118,7 @@ class YOLO_Splitter(Splitter):
         for split in ["train", "val", "test"]:
             self._write_txt(split=split, ids=getattr(self, f"id_{split}"))
         return self.path_yaml
-        
+
     def _write_yaml(self, classes: list):
         self.config.write(
             f"""
@@ -120,13 +131,13 @@ class YOLO_Splitter(Splitter):
             """
         )
         self.config.close()
-    
+
     def _write_txt(self, split: str, ids: list):
         path_txt = os.path.join(self.path_root, "%s.txt" % split)
         with open(path_txt, "w") as f:
             for id in ids:
                 f.write(os.path.join(self.path_root, "images", f"{id}.jpg") + "\n")
- 
+
     # def _handle_folders(self):
     #     for s in ["train", "val", "test"]:
     #         dir_out = os.path.join(self.path_root, s)
