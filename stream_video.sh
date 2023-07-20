@@ -1,7 +1,5 @@
 #!/bin/bash
-# PATH=/usr/local/bin:/usr/bin:/bin
-# source /Users/niche/.bash_profile
-# cd "/Users/niche/OneDrive - Virginia Tech/_03_Papers/2023/cowsformer"
-# cd modules/ring_capture
-# /usr/local/bin/npm run stream-example
-echo test
+# source /home/niche/.bash_profile
+PATH=$PATH:/home/niche/.nvm/versions/node/v16.15.1/bin/
+cd /home/niche/cowsformer/modules/ring
+npm run stream-example
