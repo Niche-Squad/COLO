@@ -1,3 +1,9 @@
+"""
+To use this file:
+(1) change DIR_SRC to the folder containing mp4 files
+(2) chang the prefix of the output file name
+"""
+
 import os
 
 import numpy as np
