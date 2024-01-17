@@ -14,7 +14,6 @@ setnames = [
 for setname in setnames:
     for split in ["train", "test"]:
         path_json = os.path.join(PATH, setname, split, "coco.json")
-        path_yaml = os.path.join(PATH, setname, split, "data.yaml")
         dir_imgs = os.path.join(PATH, setname, split)
         data = sv.DetectionDataset.from_coco(
             images_directory_path=dir_imgs,

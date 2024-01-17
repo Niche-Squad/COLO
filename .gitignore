@@ -24,7 +24,7 @@ __pycache__
 *.avi
 *.bmp
 *.zip
-
+*.tar.gz
 # log
 *.log
 *.err
