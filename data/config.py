@@ -22,32 +22,32 @@ https://lightning.ai/docs/pytorch/stable/notebooks/lightning_examples/text-trans
 
 """
 
-import pandas as pd
 import os
 import json
 import datasets
-from PIL import Image
-from collections import defaultdict
 
 CITATION = """Niche-Squad Cowsformer Dataset"""
 DESCRIPTION = """\
 """
 VERSION = datasets.Version("1.0.0")
 
-PATHS = {
-    "image": "data/images.tar.gz",
-    "train": "data/train.json",
-    "val": "data/val.json",
-    "test": "data/test.json",
-}
 
-
-def get_paths(setname, split):
+def get_coco(setname, split):
     """
     setname: 1a_angle_t2s, 1b_angle_s2t, 2_light, 3_breed, 4_all
     split: train, test
     """
-    path = os.path.join(setname, split)
+    path = os.path.join(setname, split, "coco.json")
+    return path
+
+
+def get_img(setname, split):
+    """
+    setname: 1a_angle_t2s, 1b_angle_s2t, 2_light, 3_breed, 4_all
+    split: train, test
+    """
+    path = os.path.join(setname, split, "images.tar.gz")
+    return path
 
 
 class BalloonDatasets(datasets.GeneratorBasedBuilder):
@@ -109,35 +109,21 @@ class BalloonDatasets(datasets.GeneratorBasedBuilder):
         )
 
     def _split_generators(self, dl_manager):
-        # extract the images
-        path_archive = dl_manager.download(PATHS["image"])
+        setname = self.config.name
 
-        # check config types
-        path_train = PATHS["train"]
-        path_val = PATHS["val"]
-        path_test = PATHS["test"]
-
-        # return the splits
         return [
             datasets.SplitGenerator(
                 name=datasets.Split.TRAIN,
                 gen_kwargs={
-                    "path_label": dl_manager.download(path_train),
-                    "images": dl_manager.iter_archive(path_archive),
-                },
-            ),
-            datasets.SplitGenerator(
-                name=datasets.Split.VALIDATION,
-                gen_kwargs={
-                    "path_label": dl_manager.download(path_val),
-                    "images": dl_manager.iter_archive(path_archive),
+                    "path_label": dl_manager.download(get_coco(setname, "train")),
+                    "images": dl_manager.iter_archive(get_img(setname, "train")),
                 },
             ),
             datasets.SplitGenerator(
                 name=datasets.Split.TEST,
                 gen_kwargs={
-                    "path_label": dl_manager.download(path_test),
-                    "images": dl_manager.iter_archive(path_archive),
+                    "path_label": dl_manager.download(get_coco(setname, "test")),
+                    "images": dl_manager.iter_archive(get_img(setname, "test")),
                 },
             ),
         ]
