@@ -26,9 +26,7 @@ import os
 import json
 import datasets
 
-CITATION = """Niche-Squad Cowsformer Dataset"""
-DESCRIPTION = """\
-"""
+CITATION = """Das, M., G. Ferreira, and C.P.J. Chen. (2024)"""
 VERSION = datasets.Version("1.0.0")
 
 
@@ -41,12 +39,12 @@ def get_coco(setname, split):
     return path
 
 
-def get_img(setname, split):
+def get_imgdir(setname, split):
     """
     setname: 1a_angle_t2s, 1b_angle_s2t, 2_light, 3_breed, 4_all
     split: train, test
     """
-    path = os.path.join(setname, split, "images.tar.gz")
+    path = os.path.join(setname, split)
     return path
 
 
@@ -116,28 +114,32 @@ class BalloonDatasets(datasets.GeneratorBasedBuilder):
                 name=datasets.Split.TRAIN,
                 gen_kwargs={
                     "path_label": dl_manager.download(get_coco(setname, "train")),
-                    "images": dl_manager.iter_archive(get_img(setname, "train")),
+                    "images": dl_manager.iter_files(get_imgdir(setname, "train")),
                 },
             ),
             datasets.SplitGenerator(
                 name=datasets.Split.TEST,
                 gen_kwargs={
                     "path_label": dl_manager.download(get_coco(setname, "test")),
-                    "images": dl_manager.iter_archive(get_img(setname, "test")),
+                    "images": dl_manager.iter_files(get_imgdir(setname, "test")),
                 },
             ),
         ]
 
     def _generate_examples(self, path_label, images):
         labels = COCO(path_label)
-        for file_path, file_obj in images:
-            filename = file_path.split("/")[-1]  # it's "images/xxx.jpg"
+        for filename in images:
+            # if the file is coco.json, skip
+            if not filename.endswith(".jpg"):
+                continue
+            # if the file is not in the json, skip
             img_id = labels.get_img_id(filename)
             if img_id is None:
                 continue
-            bytes_img = file_obj.read()
+            # read the image into bytes by the filenamt
+            bytes_img = open(filename, "rb").read()
             record = {
-                "image": {"path": file_path, "bytes": bytes_img},
+                "image": {"path": filename, "bytes": bytes_img},
                 "image_id": img_id,
                 "filename": filename,
                 "annotations": [
@@ -172,7 +174,9 @@ class COCO:
         return ls
 
     def get_img_id(self, filename):
+        # cut the filename from the path
+        imagename = os.path.basename(filename)
         for img in self.imgs:
-            if img["file_name"] == filename:
+            if img["file_name"] == imagename:
                 return img["id"]
         return None
