@@ -127,6 +127,10 @@ class BalloonDatasets(datasets.GeneratorBasedBuilder):
         ]
 
     def _generate_examples(self, path_label, images):
+        """
+        images: list of filenames
+            filename example: "1a_angle_t2s/train/000000000139.jpg"
+        """
         labels = COCO(path_label)
         for filename in images:
             # if the file is coco.json, skip
@@ -141,7 +145,7 @@ class BalloonDatasets(datasets.GeneratorBasedBuilder):
             record = {
                 "image": {"path": filename, "bytes": bytes_img},
                 "image_id": img_id,
-                "filename": filename,
+                "filename": os.path.basename(filename),
                 "annotations": [
                     {
                         "id": ann["id"],
