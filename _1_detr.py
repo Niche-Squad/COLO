@@ -27,15 +27,16 @@ CONFIGS = [
     "4_all",
 ]
 LS_N = [20, 50, 100, 200, 500]
+DEVICE = "mps"
 
 # 3. Initialize outputs -------------------------------------------------------------
 if not os.path.exists(FILE_OUT):
     os.makedirs(os.path.dirname(FILE_OUT), exist_ok=True)
     with open(FILE_OUT, "w") as file:
-        file.write("config,n,map5095,map50,precision,recall,f1,n_all,n_fn,n_fp\n")
+        file.write("map5095,map50,precision,recall,f1,n_all,n_fn,n_fp,config,n\n")
 
 # 4. Modeling -------------------------------------------------------------
-detr_trainer = NicheTrainer(device="cuda")
+detr_trainer = NicheTrainer(device=DEVICE)
 detr_trainer.set_out(DIR_OUT)
 
 for config in CONFIGS:
@@ -49,15 +50,15 @@ for config in CONFIGS:
             dataclass=DetectDataModule,
             dataname=DATASET,
             configname=config,
-            batch=32,
+            batch=16,
             n=n,
         )
         detr_trainer.fit(epochs=10, rm_threshold=0)
 
         # evaluation
         metrics = detr_trainer.evaluate_on_test()
-        metrics["n"] = n
         metrics["config"] = config
+        metrics["n"] = n
         line = ",".join([str(value) for value in metrics.values()])
         with open(FILE_OUT, "a") as file:
             file.write(line + "\n")
