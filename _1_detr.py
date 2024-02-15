@@ -18,7 +18,7 @@ import datasets
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIR_OUT = os.path.join(ROOT, "out", "detr")
 FILE_OUT = os.path.join(DIR_OUT, "results.csv")
-DATASET = "Niche-Sqaud/cowsformer"
+DATASET = "Niche-Squad/cowsformer"
 CONFIGS = [
     # "1a_angle_t2s",
     # "1b_angle_s2t",
@@ -29,9 +29,10 @@ CONFIGS = [
 LS_N = [20, 50, 100, 200, 500]
 
 # 3. Initialize outputs -------------------------------------------------------------
-with open(FILE_OUT, "w") as file:
-    file.write("config,n,map5095,map50,precision,recall,f1,n_all,n_fn,n_fp\n")
-
+if not os.path.exists(FILE_OUT):
+    os.makedirs(os.path.dirname(FILE_OUT), exist_ok=True)
+    with open(FILE_OUT, "w") as file:
+        file.write("config,n,map5095,map50,precision,recall,f1,n_all,n_fn,n_fp\n")
 
 # 4. Modeling -------------------------------------------------------------
 detr_trainer = NicheTrainer(device="cuda")
@@ -46,12 +47,12 @@ for config in CONFIGS:
         )
         detr_trainer.set_data(
             dataclass=DetectDataModule,
-            dataname="cowsformer",
+            dataname=DATASET,
             configname=config,
             batch=32,
             n=n,
         )
-        detr_trainer.fit(epochs=10)
+        detr_trainer.fit(epochs=10, rm_threshold=0)
 
         # evaluation
         metrics = detr_trainer.evaluate_on_test()

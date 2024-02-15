@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -p dgx_normal_q
 #SBATCH --account=niche_squad
-#SBATCH --time=48:10:00
+#SBATCH --time=120:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
 #SBATCH --gres=gpu:1

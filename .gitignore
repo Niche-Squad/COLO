@@ -39,6 +39,9 @@ __pycache__
 *.ckpt
 *.cache
 
+#
+**/events.out.tfevents.*
+
 # folders
 slides/
 modules/

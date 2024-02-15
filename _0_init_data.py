@@ -17,7 +17,7 @@ import datasets
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIR_DATA = os.path.join(ROOT, "data")
 DIR_YOLO = os.path.join(DIR_DATA, "yolo")
-DATASET = "Niche-Sqaud/cowsformer"
+DATASET = "Niche-Squad/cowsformer"
 THREADS_YOLO = 4
 CONFIGS = [
     "1a_angle_t2s",
