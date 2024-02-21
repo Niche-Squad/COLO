@@ -43,14 +43,14 @@ cowsformer = datasets.load_dataset(
 print(cowsformer)
 
 
-# # COCO
-# print("------- VERIFYING COCO -------")
-# hf_to_coco(
-#     cowsformer,
-#     PATH_COCO,
-#     classes=["cow"],
-#     size_new=RESIZE,
-# )
+# COCO
+print("------- VERIFYING COCO -------")
+hf_to_coco(
+    cowsformer,
+    PATH_COCO,
+    classes=["cow"],
+    size_new=RESIZE,
+)
 path_json = os.path.join(PATH_COCO, "test", "data.json")
 coco_api = COCO_API(path_json)
 detections = coco_api.get_detections()
