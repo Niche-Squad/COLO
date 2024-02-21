@@ -173,8 +173,6 @@ class COCO:
 
     def load_ann_by_id(self, img_id):
         ls = [ann for ann in self.anns if ann["image_id"] == img_id]
-        print("---")
-        print([i["id"] for i in ls])
         return ls
 
     def get_img_id(self, filename):

@@ -53,12 +53,13 @@ for config in CONFIGS:
             batch=16,
             n=n,
         )
-        detr_trainer.fit(epochs=10, rm_threshold=0)
+        detr_trainer.fit(epochs=3, rm_threshold=0)
 
         # evaluation
         metrics = detr_trainer.evaluate_on_test()
         metrics["config"] = config
         metrics["n"] = n
+        print(metrics)
         line = ",".join([str(value) for value in metrics.values()])
         with open(FILE_OUT, "a") as file:
             file.write(line + "\n")

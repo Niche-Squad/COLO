@@ -1,5 +1,5 @@
 import os
-from pyniche.data.COCO.API import COCO_API
+from pyniche.data.coco.API import COCO_API
 
 
 ROOT = os.path.join(

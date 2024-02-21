@@ -25,5 +25,16 @@ setnames = [
     "4_all",
 ]
 for setname in setnames:
-    dataset = load_dataset("config.py", setname)
+    dataset = load_dataset(
+        "config.py",
+        setname,
+        trust_remote_code=True,
+        cache_dir=".hf",
+    )
     dataset.push_to_hub("Niche-Squad/cowsformer", setname)
+
+
+# # test
+# setname = "4_all"
+# dataset = load_dataset("config.py", setname, trust_remote_code=True, cache_dir=".hf")
+# dataset["test"]["annotations"][0]
