@@ -7,7 +7,9 @@
 #SBATCH --gres=gpu:1
 #SBATCH --mem=32G
 
-
 export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.6,max_split_size_mb:128
 
-python3.9 _0_init_data.py
+for i in {1..300}
+do
+    python3.9 _1_yolov8.py --thread $1
+done

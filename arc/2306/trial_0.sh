@@ -12,9 +12,9 @@ export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.6,max_split_size_m
 
 for i in {1..300}
 do
+        for yolo_base in "yolov8n.pt" "yolov8m.pt" "yolov8x.pt"
     for n_train in 10 25 50 100 200
     do
-        for yolo_base in "yolov8n.pt" "yolov8m.pt" "yolov8x.pt"
         do
             echo "Iteration $i, n_train $n_train, model $yolo_base, suffix $suffix"
             python3.9 trial_0.py \
