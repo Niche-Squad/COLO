@@ -16,9 +16,9 @@ do
         for config in "1a_angle_t2s" "1b_angle_s2t" "2_light" "3_breed" "4_all"
         do
             if [ $config == "3_breed" ]; then
-                n_values=(20 50 100 200 250)
+                n_values=(16 32 64 128 250)
             else
-                n_values=(20 50 100 300 500)
+                n_values=(16 32 64 128 256 500)
             fi
 
             for n in "${n_values[@]}"
