@@ -5,6 +5,7 @@ Download data from HuggingFace to local machine
 # 1. Imports -------------------------------------------------------------------
 # native imports
 import os
+from re import T
 import sys
 sys.path.insert(0, os.path.join("/home", "niche", "pyniche"))
 
@@ -20,7 +21,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 DIR_DATA = os.path.join(ROOT, "data")
 DIR_YOLO = os.path.join(DIR_DATA, "yolo")
 DATASET = "Niche-Squad/cowsformer"
-THREADS_YOLO = 4
+THREADS_YOLO = 8
 CONFIGS = [
     "1a_angle_t2s",
     "1b_angle_s2t",
