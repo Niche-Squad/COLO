@@ -33,6 +33,7 @@ for config in CONFIGS:
         DATASET,
         config,
         download_mode="force_redownload",
+        cache_dir=os.path.join(DIR_DATA, ".huggingface"),
     )
     # convert to YOLO for YOLOv8
     hf_to_yolo(

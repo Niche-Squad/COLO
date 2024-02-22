@@ -27,7 +27,7 @@ CONFIGS = [
     "4_all",
 ]
 LS_N = [20, 50, 100, 200, 500]
-DEVICE = "mps"
+DEVICE = "cuda"
 
 # 3. Initialize outputs -------------------------------------------------------------
 if not os.path.exists(FILE_OUT):
@@ -37,10 +37,16 @@ if not os.path.exists(FILE_OUT):
 
 # 4. Modeling -------------------------------------------------------------
 detr_trainer = NicheTrainer(device=DEVICE)
-detr_trainer.set_out(DIR_OUT)
 
 for config in CONFIGS:
     for n in LS_N:
+        # define task folders
+        i = 0
+        while True:
+            path_task = os.path.join(DIR_OUT, "%s_%d_%d" % (config, n, i))
+            if not os.path.exists(path_task):
+                break
+            i += 1      
         # training
         detr_trainer.set_model(
             modelclass=NicheDETR,
@@ -53,7 +59,8 @@ for config in CONFIGS:
             batch=16,
             n=n,
         )
-        detr_trainer.fit(epochs=3, rm_threshold=0)
+        detr_trainer.set_out(os.path.join(DIR_OUT, path_task))
+        detr_trainer.fit(epochs=50, rm_threshold=0)
 
         # evaluation
         metrics = detr_trainer.evaluate_on_test()
@@ -63,3 +70,4 @@ for config in CONFIGS:
         line = ",".join([str(value) for value in metrics.values()])
         with open(FILE_OUT, "a") as file:
             file.write(line + "\n")
+         
