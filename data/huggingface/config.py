@@ -48,7 +48,7 @@ def get_imgdir(setname, split):
     return path
 
 
-class BalloonDatasets(datasets.GeneratorBasedBuilder):
+class COLODatasets(datasets.GeneratorBasedBuilder):
     BUILDER_CONFIGS = [
         datasets.BuilderConfig(
             name="1a_angle_t2s",
@@ -85,6 +85,7 @@ class BalloonDatasets(datasets.GeneratorBasedBuilder):
                     "image": datasets.Image(),
                     "image_id": datasets.Value("int64"),
                     "filename": datasets.Value("string"),
+                    "n_cows": datasets.Value("int64"),
                     "annotations": datasets.Sequence(
                         {
                             "id": datasets.Value("int64"),
@@ -142,10 +143,12 @@ class BalloonDatasets(datasets.GeneratorBasedBuilder):
                 continue
             # read the image into bytes by the filenamt
             bytes_img = open(filename, "rb").read()
+            ls_anns = labels.load_ann_by_id(img_id)
             record = {
                 "image": {"path": filename, "bytes": bytes_img},
                 "image_id": img_id,
                 "filename": os.path.basename(filename),
+                "n_cows": len(ls_anns),
                 "annotations": [
                     {
                         "id": ann["id"],
@@ -156,7 +159,7 @@ class BalloonDatasets(datasets.GeneratorBasedBuilder):
                         "bbox": ann["bbox"],
                         "segmentation": ann["segmentation"],
                     }
-                    for ann in labels.load_ann_by_id(img_id)
+                    for ann in ls_anns
                 ],
             }
             yield filename, record

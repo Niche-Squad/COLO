@@ -29,9 +29,9 @@ for setname in setnames:
         "config.py",
         setname,
         trust_remote_code=True,
-        cache_dir=".hf",
+        cache_dir=".huggingface",
     )
-    dataset.push_to_hub("Niche-Squad/cowsformer", setname)
+    dataset.push_to_hub("Niche-Squad/COLO", setname)
 
 
 # # test
