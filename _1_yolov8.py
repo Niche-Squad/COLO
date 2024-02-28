@@ -56,21 +56,21 @@ def main(args):
             file.write("map5095,map50,precision,recall,f1,n_all,n_fn,n_fp,config,model,n\n")
 
     # 4. Modeling -------------------------------------------------------------
-    detr_trainer = NicheTrainer(device=DEVICE)     
-    detr_trainer.set_model(
+    trainer = NicheTrainer(device=DEVICE)     
+    trainer.set_model(
         modelclass=NicheYOLO,
         checkpoint=model,
     )
-    detr_trainer.set_data(
+    trainer.set_data(
         dataclass=DIR_DATA,
         batch=16,
         n=n,
     )
-    detr_trainer.set_out(os.path.join(DIR_OUT, path_task))
-    detr_trainer.fit(epochs=50, rm_threshold=0)
+    trainer.set_out(os.path.join(DIR_OUT, path_task))
+    trainer.fit(epochs=100, rm_threshold=0)
 
     # 5. Evaluation -------------------------------------------------------------
-    metrics = detr_trainer.evaluate_on_test()
+    metrics = trainer.evaluate_on_test()
     metrics["config"] = config
     metrics["model"] = model.split(".")[0] # remove .pt
     metrics["n"] = n
