@@ -8,7 +8,7 @@ __pycache__
 **/node_modules/*
 **/.hf
 **/.huggingface
-
+modules/
 
 # common files
 *.csv

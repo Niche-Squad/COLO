@@ -26,7 +26,6 @@ from pyniche.models.detection.yolo import NicheYOLO
 # 2. Global Variables ----------------------------------------------------------
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIR_OUT = os.path.join(ROOT, "out", "yolov8")
-DATASET = "Niche-Squad/cowsformer"
 DEVICE = "cuda"
 
 def main(args):
