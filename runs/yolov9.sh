@@ -11,7 +11,7 @@ export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.6,max_split_size_m
 
 cd /home/niche/COLO/yolov9
 
-run=$1
+run=run_$1
 file_out=out/$run/results.csv
 header="map5095,map50,precision,recall,f1,n_all,n_fn,n_fp,config,model,n"
 # check file
@@ -33,48 +33,51 @@ do
 
             for n in "${n_values[@]}"
             do 
-                task=$model_$config_$n_$i
-                dir_out=out/$run/$task
-                dir_data=data/$config/$run
-                best_model=$dir_out/weights/best.pt
+                task="${model}_${config}_${n}_${i}"
+                dir_out="out/${run}/${task}"
+                dir_data="data/${config}/${run}"
+                best_model="${dir_out}/weights/best.pt"
 
                 # shuffle data
                 python3.9 ../_2a_split.py \
                     --dir_data $dir_data\
-                    --n $n\
+                    --n $n
                 # training
                 python3.9 train_dual.py \
                     --batch 16\
-                    --epochs 5\
+                    --epochs 100\
                     --img 640\
                     --device 0\
                     --min-items 0\
                     --close-mosaic 15\
-                    --data $dir_data/data.yaml\
-                    --weights $model.pt\
-                    --cfg models/detect/$model.yaml\
+                    --data "${dir_data}/data.yaml"\
+                    --weights "${model}.pt"\
+                    --cfg "models/detect/${model}.yaml"\
                     --hyp data/hyps/hyp.scratch-high.yaml\
                     --project .\
-                    --name $dir_out\ 
+                    --name ${dir_out}
                 # eval
                 python3.9 val_dual.py \
-                    --weights $best_model\
+                    --weights ${best_model}\
                     --device 0\
-                    --data $dir_data/data.yaml\
+                    --data "${dir_data}/data.yaml"\
                     --task test\
+                    --save-txt \
+                    --save-conf \
+                    --single-cls \
+                    --exist-ok \
                     --project .\
-                    --name $dir_out\
-                    --save-txt\
-                    --save-conf\
-                    --single-cls
+                    --name ${dir_out}
                 # save results
                 python3.9 ../_2b_save_results.py \
-                    --dir_data  $dir_data\
-                    --dir_preds $dir_out/labels\
+                    --dir_data  "${dir_data}"\
+                    --dir_preds "${dir_out}/labels"\
                     --file_out $file_out\
                     --config $config\
                     --model $model\
-                    --n $n                
+                    --n $n
+                # remove weights
+                rm -rf "${dir_out}/weights" 
             done
         done
     done
