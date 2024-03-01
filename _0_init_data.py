@@ -5,9 +5,9 @@ Download data from HuggingFace to local machine
 # 1. Imports -------------------------------------------------------------------
 # native imports
 import os
-from re import T
 import sys
-sys.path.insert(0, os.path.join("/home", "niche", "pyniche"))
+import argparse
+# sys.path.insert(0, os.path.join("/home", "niche", "pyniche"))
 
 # custom imports
 from pyniche.data.yolo.API import YOLO_API
@@ -18,10 +18,7 @@ import datasets
 
 # 2. Global Variables ----------------------------------------------------------
 ROOT = os.path.dirname(os.path.abspath(__file__))
-DIR_DATA = os.path.join(ROOT, "data")
-DIR_YOLO = os.path.join(DIR_DATA, "yolo")
-DATASET = "Niche-Squad/cowsformer"
-THREADS_YOLO = 8
+DATASET = "Niche-Squad/COLO"
 CONFIGS = [
     "1a_angle_t2s",
     "1b_angle_s2t",
@@ -31,22 +28,34 @@ CONFIGS = [
 ]
 
 # 3. Download Data -------------------------------------------------------------
-for config in CONFIGS:
-    dir_config = os.path.join(DIR_YOLO, config)
-    hf_dataset = datasets.load_dataset(
-        DATASET,
-        config,
-        download_mode="force_redownload",
-        cache_dir=os.path.join(DIR_DATA, ".huggingface"),
-    )
-    # convert to YOLO for YOLOv8
-    hf_to_yolo(
-        hf_dataset,
-        dir_config,
-        classes=["cow"],
-        size_new=(640, 640),
-    )
-    # clone the datasets for multi-threading
-    yolo_api = YOLO_API(dir_config)
-    for thread in range(THREADS_YOLO):
-        yolo_api.clone("run_%d" % thread)
+def main(args):
+    DIR_DATA = args.dir_data
+    THREADS_YOLO = args.threads
+    
+    for config in CONFIGS:
+        dir_config = os.path.join(DIR_DATA, config)
+        hf_dataset = datasets.load_dataset(
+            DATASET,
+            config,
+            download_mode="force_redownload",
+            cache_dir=os.path.join(DIR_DATA, ".huggingface"),
+        )
+        # convert to YOLO for YOLOv8
+        hf_to_yolo(
+            hf_dataset,
+            dir_config,
+            classes=["cow"],
+            size_new=(640, 640),
+        )
+        # clone the datasets for multi-threading
+        yolo_api = YOLO_API(dir_config)
+        for thread in range(THREADS_YOLO):
+            yolo_api.clone("run_%d" % thread)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dir_data")
+    parser.add_argument("--threads", default=8)
+    args = parser.parse_args()
+    main(args)
+    
