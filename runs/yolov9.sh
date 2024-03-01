@@ -12,7 +12,7 @@ export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.6,max_split_size_m
 cd /home/niche/COLO/yolov9
 
 run=run_$1
-file_out=out/$run/results.csv
+file_out="out/${run}/results.csv"
 header="map5095,map50,precision,recall,f1,n_all,n_fn,n_fp,config,model,n"
 # check file
 if [ ! -f $file_out ]; then
