@@ -11,18 +11,18 @@ ROOT = os.path.join(
     "niche",
     "_03_Papers",
     "2024",
-    "cowsformer",
+    "COLO",
     "data",
     "huggingface",
 )
 
 os.chdir(ROOT)
 setnames = [
+    "0_all",
     "1a_angle_t2s",
     "1b_angle_s2t",
     "2_light",
-    "3_breed",
-    "4_all",
+    "3_external",
 ]
 for setname in setnames:
     dataset = load_dataset(

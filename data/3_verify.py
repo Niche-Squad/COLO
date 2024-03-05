@@ -28,7 +28,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 PATH_VERIFY = os.path.join(ROOT, "verify")
 PATH_COCO = os.path.join(PATH_VERIFY, "coco")
 PATH_YOLO = os.path.join(PATH_VERIFY, "yolo")
-CONFIG = "4_all"  # 1a_angle_t2s, 1b_angle_s2t, 2_light, 3_breed, 4_all
+CONFIG = "0_all"  # 1a_angle_t2s, 1b_angle_s2t, 2_light, 3_breed, 4_all
 N_VERIFY = 20
 RESIZE = (640, 640)
 

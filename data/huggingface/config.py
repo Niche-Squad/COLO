@@ -51,6 +51,11 @@ def get_imgdir(setname, split):
 class COLODatasets(datasets.GeneratorBasedBuilder):
     BUILDER_CONFIGS = [
         datasets.BuilderConfig(
+            name="0_all",
+            version=VERSION,
+            description="Traing on all images, testing on all images",
+        ),
+        datasets.BuilderConfig(
             name="1a_angle_t2s",
             version=VERSION,
             description="Traing on top-down images, testing on side-view images",
@@ -66,14 +71,9 @@ class COLODatasets(datasets.GeneratorBasedBuilder):
             description="Traing on images with light, testing on images without light",
         ),
         datasets.BuilderConfig(
-            name="3_breed",
+            name="3_external",
             version=VERSION,
             description="Traing on images with Holstein cows, testing on images with all cows",
-        ),
-        datasets.BuilderConfig(
-            name="4_all",
-            version=VERSION,
-            description="Traing on all images, testing on all images",
         ),
     ]
 
@@ -83,8 +83,6 @@ class COLODatasets(datasets.GeneratorBasedBuilder):
             features=datasets.Features(
                 {
                     "image": datasets.Image(),
-                    "image_id": datasets.Value("int64"),
-                    "filename": datasets.Value("string"),
                     "n_cows": datasets.Value("int64"),
                     "annotations": datasets.Sequence(
                         {
@@ -101,6 +99,8 @@ class COLODatasets(datasets.GeneratorBasedBuilder):
                             ),
                         }
                     ),
+                    "image_id": datasets.Value("int64"),
+                    "filename": datasets.Value("string"),
                 }
             ),
             homepage="github.com/niche-squad",
@@ -146,8 +146,6 @@ class COLODatasets(datasets.GeneratorBasedBuilder):
             ls_anns = labels.load_ann_by_id(img_id)
             record = {
                 "image": {"path": filename, "bytes": bytes_img},
-                "image_id": img_id,
-                "filename": os.path.basename(filename),
                 "n_cows": len(ls_anns),
                 "annotations": [
                     {
@@ -161,6 +159,8 @@ class COLODatasets(datasets.GeneratorBasedBuilder):
                     }
                     for ann in ls_anns
                 ],
+                "image_id": img_id,
+                "filename": os.path.basename(filename),
             }
             yield filename, record
 
