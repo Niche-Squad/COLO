@@ -35,9 +35,9 @@ def main(args):
     n = int(args.n)
 
     # create result file
-    DIR_OUT = os.path.join(ROOT, "out", "yolov8", thread)
+    DIR_OUT = os.path.join(ROOT, "out", "yolo_240305", thread)
     FILE_OUT = os.path.join(DIR_OUT, "results.csv")
-    DIR_DATA = os.path.join(ROOT, "data", "yolo", config, thread)
+    DIR_DATA = os.path.join(ROOT, "data", config, thread)
 
     # create task folder
     i = 0
@@ -66,7 +66,7 @@ def main(args):
     )
     trainer.set_out(os.path.join(DIR_OUT, path_task))
     trainer.fit(
-        epochs=2,
+        epochs=100,
         rm_threshold=0,
         copy_paste=0.3,
         mixup=0.15,)

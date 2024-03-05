@@ -11,7 +11,7 @@ export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.6,max_split_size_m
 
 for i in {1..300}
 do
-    for model in "yolov9c.pt" "yolov9e.pt" "rtdetr-l.pt" "rtdetr-x.pt" "yolov8n.pt" "yolov8m.pt" "yolov8x.pt" 
+    for model in "yolov9c.pt" "yolov9e.pt" "yolov8n.pt" "yolov8m.pt" "yolov8x.pt" 
     do
         for config in "0_all" "1a_angle_t2s" "1b_angle_s2t" "2_light" "3_external"
         do
@@ -27,3 +27,4 @@ do
     done
 
 done
+
