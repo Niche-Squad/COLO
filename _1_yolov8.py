@@ -25,7 +25,6 @@ from pyniche.models.detection.yolo import NicheYOLO
 
 # 2. Global Variables ----------------------------------------------------------
 ROOT = os.path.dirname(os.path.abspath(__file__))
-DIR_OUT = os.path.join(ROOT, "out", "yolov8")
 DEVICE = "cuda"
 
 def main(args):
@@ -66,7 +65,11 @@ def main(args):
         n=n,
     )
     trainer.set_out(os.path.join(DIR_OUT, path_task))
-    trainer.fit(epochs=100, rm_threshold=0)
+    trainer.fit(
+        epochs=2,
+        rm_threshold=0,
+        copy_paste=0.3,
+        mixup=0.15,)
 
     # 5. Evaluation -------------------------------------------------------------
     metrics = trainer.evaluate_on_test()

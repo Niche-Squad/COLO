@@ -53,3 +53,26 @@ modules/
 !**/demo/**
 !requirements.txt
 !modules/ring_capture/packages/**
+# notebooks/*
+# notes/*
+notes/output/
+out/*
+run/logs/*
+lightning_logs/*
+# **/examples/*
+# log files
+*.err
+*.log
+*.out
+**/events.out.tfevents.*
+# images/videos
+*.jpg
+*.jpeg
+*.tar.gz
+# python miscs
+*.pyc
+# model files
+*.h5
+*.ckpt
+*.pt
+PyPI-Recovery-Codes-poissonfish-2024-02-07T22_31_52.500609.txt
