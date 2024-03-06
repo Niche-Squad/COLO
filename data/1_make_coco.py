@@ -1,4 +1,7 @@
+import copy
 import os
+import shutil
+from webbrowser import get
 from pyniche.data.coco.API import COCO_API
 
 
@@ -7,7 +10,7 @@ ROOT = os.path.join(
     "niche",
     "_03_Papers",
     "2024",
-    "cowsformer",
+    "COLO",
     "data",
     "huggingface",
 )
@@ -26,70 +29,102 @@ def get_json(setname):
     return os.path.join(ROOT, "coco_{}.json".format(setname))
 
 
-def get_dir(setname, task):
+def get_splits(setname):
+    splits = [s for s in os.listdir(os.path.join(ROOT, setname)) if "DS_Store" not in s]
+    return splits
+
+
+def copy_substract_from_test_to_train(setname):
     """
-    arguments
-    ---
-    setname: 1a_angle_t2s, 1b_angle_s2t, 2_light, 3_breed, 4_all
-    task: train, test
-
-    prerequisite
-    ---
-    PATH is the root path of the data
+    Obtain the substraction of test from all, and copy the images to train
     """
-    return os.path.join(ROOT, setname, task)
+    dir_all = os.path.join(ROOT, setname, "all")
+    dir_test = os.path.join(ROOT, setname, "test")
+    dir_train = os.path.join(ROOT, setname, "train")
+    ls_all = os.listdir(dir_all)
+    ls_test = os.listdir(dir_test)
+    ls_train = list(set(ls_all) - set(ls_test))
+    # copy the images
+    for img in ls_train:
+        img_train = os.path.join(dir_train, img)
+        img_all = os.path.join(dir_all, img)
+        if not os.path.exists(img_train):
+            shutil.copy(img_all, img_train)
 
 
+def make_coco(split, ls_coco=[]):
+    """
+    generate a coco file from a list of coco files and images
+    """
+
+    if len(ls_coco) == 0:
+        print("No COCO files to concatenate")
+
+    else:
+        dir_tgt = os.path.join(ROOT, setname, split)
+        coco_base = ls_coco[0].subset_by_dir(dir_tgt)
+
+        if len(ls_coco) > 1:
+            for i in range(1, len(ls_coco)):
+                coco_base = coco_base.concatenate(ls_coco[i].subset_by_dir(dir_tgt))
+
+        coco_base.save(os.path.join(dir_tgt, "coco.json"))
+
+
+# load json files
 coco_side = COCO_API(path_json=get_json("side"))
 coco_top = COCO_API(path_json=get_json("top"))
-coco_holstein = COCO_API(path_json=get_json("holstein"))
+coco_ext = COCO_API(path_json=get_json("external"))
 
-# 1a_angle_t2s ---
-# train
-dir_tgt = get_dir("1a_angle_t2s", "train")
-coco_top.subset_by_dir(dir_tgt).save(os.path.join(dir_tgt, "coco.json"))
-# test
-dir_tgt = get_dir("1a_angle_t2s", "test")
-coco_side.subset_by_dir(dir_tgt).save(os.path.join(dir_tgt, "coco.json"))
+# 0_all --------------------------------------------------------------
+## A. copy images to train from the substraction of test from all
+setname = "0_all"
+copy_substract_from_test_to_train(setname)
 
-# 1b_angle_s2t ---
-# train
-dir_tgt = get_dir("1b_angle_s2t", "train")
-coco_side.subset_by_dir(dir_tgt).save(os.path.join(dir_tgt, "coco.json"))
-# test
-dir_tgt = get_dir("1b_angle_s2t", "test")
-coco_top.subset_by_dir(dir_tgt).save(os.path.join(dir_tgt, "coco.json"))
+## B. generate coco file
+for split in get_splits(setname):
+    make_coco(split, [coco_side, coco_top])
 
-# 2_light ---
-# train
-dir_tgt = get_dir("2_light", "train")
-coco_side_sub = coco_side.subset_by_dir(dir_tgt)
-coco_top_sub = coco_top.subset_by_dir(dir_tgt)
-coco_side_sub.concatenate(coco_top_sub).save(os.path.join(dir_tgt, "coco.json"))
-# test
-dir_tgt = get_dir("2_light", "test")
-coco_side_sub = coco_side.subset_by_dir(dir_tgt)
-coco_top_sub = coco_top.subset_by_dir(dir_tgt)
-coco_side_sub.concatenate(coco_top_sub).save(os.path.join(dir_tgt, "coco.json"))
+# 1_top --------------------------------------------------------------
+## A. copy images to train from the substraction of test from all
+setname = "1_top"
+copy_substract_from_test_to_train(setname)
 
-# 3_breed ---
-# train
-dir_tgt = get_dir("3_breed", "train")
-coco_holstein.subset_by_dir(dir_tgt).save(os.path.join(dir_tgt, "coco.json"))
-# test
-dir_tgt = get_dir("3_breed", "test")
-coco_side_sub = coco_side.subset_by_dir(dir_tgt)
-coco_top_sub = coco_top.subset_by_dir(dir_tgt)
-coco_side_sub.concatenate(coco_top_sub).save(os.path.join(dir_tgt, "coco.json"))
+## B. generate coco file
+for split in get_splits(setname):
+    make_coco(split, [coco_top])
 
-# 4_all ---
-# train
-dir_tgt = get_dir("4_all", "train")
-coco_side_sub = coco_side.subset_by_dir(dir_tgt)
-coco_top_sub = coco_top.subset_by_dir(dir_tgt)
-coco_side_sub.concatenate(coco_top_sub).save(os.path.join(dir_tgt, "coco.json"))
-# test
-dir_tgt = get_dir("4_all", "test")
-coco_side_sub = coco_side.subset_by_dir(dir_tgt)
-coco_top_sub = coco_top.subset_by_dir(dir_tgt)
-coco_side_sub.concatenate(coco_top_sub).save(os.path.join(dir_tgt, "coco.json"))
+# 2_side --------------------------------------------------------------
+## A. copy images to train from the substraction of test from all
+setname = "2_side"
+copy_substract_from_test_to_train(setname)
+
+## B. generate coco file
+for split in get_splits(setname):
+    make_coco(split, [coco_side])
+
+# 3_external --------------------------------------------------------------
+setname = "3_external"
+## A. generate coco file
+for split in get_splits(setname):
+    make_coco(split, [coco_ext])
+
+# a1_t2s --------------------------------------------------------------
+setname = "a1_t2s"
+make_coco("train", [coco_top])
+make_coco("test", [coco_side])
+
+# a2_s2t --------------------------------------------------------------
+setname = "a2_s2t"
+make_coco("train", [coco_side])
+make_coco("test", [coco_top])
+
+# b_light --------------------------------------------------------------
+setname = "b_light"
+for split in get_splits(setname):
+    make_coco(split, [coco_side, coco_top])
+
+# c_external --------------------------------------------------------------
+setname = "c_external"
+make_coco("train", [coco_side, coco_top])
+make_coco("test", [coco_ext])
