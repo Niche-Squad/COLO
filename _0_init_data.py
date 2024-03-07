@@ -7,6 +7,7 @@ Download data from HuggingFace to local machine
 import os
 import sys
 import argparse
+
 # sys.path.insert(0, os.path.join("/home", "niche", "pyniche"))
 
 # custom imports
@@ -27,11 +28,12 @@ CONFIGS = [
     "3_external",
 ]
 
+
 # 3. Download Data -------------------------------------------------------------
 def main(args):
     DIR_DATA = args.dir_data
     THREADS_YOLO = args.threads
-    
+
     for config in CONFIGS:
         dir_config = os.path.join(DIR_DATA, config)
         hf_dataset = datasets.load_dataset(
@@ -52,10 +54,10 @@ def main(args):
         for thread in range(THREADS_YOLO):
             yolo_api.clone("run_%d" % thread)
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dir_data")
     parser.add_argument("--threads", default=8)
     args = parser.parse_args()
     main(args)
-    
