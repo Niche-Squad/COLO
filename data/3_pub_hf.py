@@ -13,7 +13,7 @@ ROOT = os.path.join(
     "2024",
     "COLO",
     "data",
-    "huggingface",
+    "huggingface_cropped",
 )
 # rm cache folder
 os.system(f"rm -rf {ROOT}/.huggingface")
@@ -21,10 +21,13 @@ os.system(f"rm -rf {ROOT}/.huggingface")
 os.chdir(ROOT)
 setnames = [
     "0_all",
-    "1a_angle_t2s",
-    "1b_angle_s2t",
-    "2_light",
+    "1_top",
+    "2_side",
     "3_external",
+    "a1_t2s",
+    "a2_s2t",
+    "b_light",
+    "c_external",
 ]
 for setname in setnames:
     dataset = load_dataset(

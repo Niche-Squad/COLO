@@ -56,12 +56,14 @@ for setname in ls_sets:
     for split in splits:
         dir_src = os.path.join(DIR_SRC, setname, split)
         dir_dst = os.path.join(DIR_DST, setname, split)
+        coco_src = os.path.join(dir_src, "coco.json")
+        coco_dst = os.path.join(dir_dst, "coco.json")
         print(dir_src)
         # create folder
         if not os.path.exists(dir_dst):
             os.makedirs(dir_dst)
 
-        api = COCO_API(os.path.join(dir_src, "coco.json"))
+        api = COCO_API(coco_src)
         imgs = api.images()
         anns = api.annotations()
         new_anns = []
@@ -124,10 +126,10 @@ for setname in ls_sets:
 
         # save the updated annotations
         api.data["annotations"] = new_anns
-        api.save(os.path.join(dir_dst, "coco.json"))
+        api.save(coco_dst)
 
         # verify
-        new_api = COCO_API(os.path.join(dir_dst, "coco.json"))
+        new_api = COCO_API(coco_dst)
         detections = new_api.get_detections()
         n_detect = len(detections)
         for _ in range(20):
@@ -138,5 +140,5 @@ for setname in ls_sets:
                 detections[i],
                 text="cow",
                 thickness=1,
-                save=os.path.join(dir_dst, f"verify_{i}.png"),
+                save=os.path.join(dir_dst, f"_verify_{i}.png"),
             )

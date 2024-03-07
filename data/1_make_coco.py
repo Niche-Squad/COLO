@@ -1,7 +1,16 @@
-import copy
 import os
+import sys
 import shutil
-from webbrowser import get
+
+sys.path.insert(
+    0,
+    os.path.join(
+        "/Users",
+        "niche",
+        "_04_Software",
+        "pyniche",
+    ),
+)
 from pyniche.data.coco.API import COCO_API
 
 
