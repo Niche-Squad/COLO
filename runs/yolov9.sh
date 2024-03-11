@@ -39,7 +39,7 @@ do
                 best_model="${dir_out}/weights/best.pt"
 
                 # shuffle data
-                python3.9 ../_2a_split.py \
+                python3.9 ../_split.py \
                     --dir_data $dir_data\
                     --n $n
                 # training
@@ -69,7 +69,7 @@ do
                     --project .\
                     --name ${dir_out}
                 # save results
-                python3.9 ../_2b_save_results.py \
+                python3.9 ../_save_results.py \
                     --dir_data  "${dir_data}"\
                     --dir_preds "${dir_out}/labels"\
                     --file_out $file_out\
@@ -77,7 +77,7 @@ do
                     --model $model\
                     --n $n
                 # remove weights
-                rm -rf "${dir_out}/weights" 
+                rm -rf "${dir_out}/weights"
             done
         done
     done

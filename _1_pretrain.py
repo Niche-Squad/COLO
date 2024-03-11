@@ -29,7 +29,6 @@ def main(args):
     DIR_OUT = os.path.join(
         ROOT,
         "out",
-        "yolo_240311",
         "pretrained",
         "%s_%s" % (model[:-3], config),
     )
@@ -75,11 +74,15 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=str, help="yolo checkpoint")
+    parser.add_argument(
+        "--model",
+        type=str,
+        help="yolo checkpoint",
+    )
     parser.add_argument(
         "--config",
         type=str,
-        help="options: a1_t2s, a2_s2t, b_light, c_external, 0_all, 1_top, 2_side, 3_external",
+        help="options: 0_all, 1_top, 2_side",
     )
     args = parser.parse_args()
     main(args)

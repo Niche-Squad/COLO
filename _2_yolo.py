@@ -30,23 +30,31 @@ DEVICE = "cuda"
 
 def main(args):
     # extract arguments
-    thread = "run_%d" % int(args.thread)
     model = args.model
     config = args.config
     n = int(args.n)
+    i = int(args.i)
 
     # create result file
-    DIR_OUT = os.path.join(ROOT, "out", "yolo_240305", thread)
-    FILE_OUT = os.path.join(DIR_OUT, "results.csv")
-    DIR_DATA = os.path.join(ROOT, "data", config, thread)
+    DIR_OUT = os.path.join(
+        ROOT,
+        "out",
+        "yolo",
+        config,
+        "%s_%d_%d" % (model[:-3], n, i),
+    )
+    DIR_DATA = os.path.join(
+        ROOT,
+        "data",
+        config,
+    )
+    FILE_OUT = os.path.join(
+        DIR_OUT,
+        "results.csv",
+    )
 
-    # create task folder
-    i = 0
-    while True:
-        path_task = os.path.join(DIR_OUT, "%s_%s_%d_%d" % (model[:-3], config, n, i))
-        if not os.path.exists(path_task):
-            break
-        i += 1
+    if not os.path.exists(DIR_OUT):
+        os.makedirs(DIR_OUT, exist_ok=True)
 
     # 3. Initialize outputs -------------------------------------------------------------
     if not os.path.exists(FILE_OUT):
@@ -67,7 +75,7 @@ def main(args):
         batch=16,
         n=n,
     )
-    trainer.set_out(os.path.join(DIR_OUT, path_task))
+    trainer.set_out(DIR_OUT)
     trainer.fit(
         epochs=100,
         rm_threshold=0,
@@ -87,13 +95,25 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--thread", type=str, help="thread number")
-    parser.add_argument("--model", type=str, help="yolo checkpoint")
+    parser.add_argument(
+        "--model",
+        type=str,
+        help="yolo checkpoint",
+    )
     parser.add_argument(
         "--config",
         type=str,
         help="options: a1_t2s, a2_s2t, b_light, c_external, 0_all, 1_top, 2_side, 3_external",
     )
-    parser.add_argument("--n", type=int, help="number of images in training set")
+    parser.add_argument(
+        "--n",
+        type=int,
+        help="number of images in training set",
+    )
+    parser.add_argument(
+        "--i",
+        type=int,
+        help="iteration number",
+    )
     args = parser.parse_args()
     main(args)

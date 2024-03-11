@@ -13,16 +13,13 @@ for i in {1..300}
 do
     for model in "yolov9c.pt" "yolov9e.pt" "yolov8n.pt" "yolov8m.pt" "yolov8x.pt"
     do
-        for config in "0_all" "1a_angle_t2s" "1b_angle_s2t" "2_light" "3_external"
+        for n in 16 32 64 128 256 500
         do
-            for n in 16 32 64 128 256 500
-            do 
-                python3.9 _1_yolov8.py\
-                    --thread $1\
-                    --model $model\
-                    --config $config\
-                    --n $n
-            done
+            python3.9 _2_yolo.py\
+                --model $model\
+                --config $1\
+                --n $n\
+                --i $i
         done
     done
 
