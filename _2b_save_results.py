@@ -2,11 +2,12 @@ import argparse
 from pyniche.data.yolo.API import YOLO_API
 from pyniche.evaluate import from_sv
 
+
 def main(args):
     dir_data = args.dir_data
     dir_preds = args.dir_preds
     file_out = args.file_out
-    
+
     api = YOLO_API(dir_data)
     lbs = api.get_detections("test")
     pre = api.get_detections("test", path_preds=dir_preds)
@@ -17,7 +18,7 @@ def main(args):
     line = ",".join([str(value) for value in out.values()])
     with open(file_out, "a") as file:
         file.write(line + "\n")
-        
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

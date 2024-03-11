@@ -53,27 +53,42 @@ class COLODatasets(datasets.GeneratorBasedBuilder):
         datasets.BuilderConfig(
             name="0_all",
             version=VERSION,
-            description="Traing on all images, testing on all images",
+            description="Including top-down and side-view images with pre-defined train-test split",
         ),
         datasets.BuilderConfig(
-            name="1a_angle_t2s",
+            name="1_top",
             version=VERSION,
-            description="Traing on top-down images, testing on side-view images",
+            description="Top-down images with pre-defined train-test split, and also splits for different lighting conditions",
         ),
         datasets.BuilderConfig(
-            name="1b_angle_s2t",
+            name="2_side",
             version=VERSION,
-            description="Traing on side-view images, testing on top-down images",
-        ),
-        datasets.BuilderConfig(
-            name="2_light",
-            version=VERSION,
-            description="Traing on images with light, testing on images without light",
+            description="Side view images with pre-defined train-test split, and also splits for different lighting conditions",
         ),
         datasets.BuilderConfig(
             name="3_external",
             version=VERSION,
-            description="Traing on images with Holstein cows, testing on images with all cows",
+            description="Images captured from external sources, which have lower angle and different lighting conditions",
+        ),
+        datasets.BuilderConfig(
+            name="a1_t2s",
+            version=VERSION,
+            description="For testing the model generalization from top-down to side-view images",
+        ),
+        datasets.BuilderConfig(
+            name="a2_s2t",
+            version=VERSION,
+            description="For testing the model generalization from side-view to top-down images",
+        ),
+        datasets.BuilderConfig(
+            name="b_light",
+            version=VERSION,
+            description="For testing the model generalization from daylight condition to indoor lightning and NIR images",
+        ),
+        datasets.BuilderConfig(
+            name="c_external",
+            version=VERSION,
+            description="For testing the model generalization from 0_all to 3_external",
         ),
     ]
 
@@ -83,6 +98,8 @@ class COLODatasets(datasets.GeneratorBasedBuilder):
             features=datasets.Features(
                 {
                     "image": datasets.Image(),
+                    "width": datasets.Value("int64"),
+                    "height": datasets.Value("int64"),
                     "n_cows": datasets.Value("int64"),
                     "annotations": datasets.Sequence(
                         {
@@ -109,23 +126,73 @@ class COLODatasets(datasets.GeneratorBasedBuilder):
 
     def _split_generators(self, dl_manager):
         setname = self.config.name
-
-        return [
-            datasets.SplitGenerator(
-                name=datasets.Split.TRAIN,
-                gen_kwargs={
-                    "path_label": dl_manager.download(get_coco(setname, "train")),
-                    "images": dl_manager.iter_files(get_imgdir(setname, "train")),
-                },
-            ),
-            datasets.SplitGenerator(
-                name=datasets.Split.TEST,
-                gen_kwargs={
-                    "path_label": dl_manager.download(get_coco(setname, "test")),
-                    "images": dl_manager.iter_files(get_imgdir(setname, "test")),
-                },
-            ),
-        ]
+        if setname == "1_top" or setname == "2_side":
+            return [
+                datasets.SplitGenerator(
+                    name=datasets.Split("daylight"),
+                    gen_kwargs={
+                        "path_label": dl_manager.download(
+                            get_coco(setname, "daylight")
+                        ),
+                        "images": dl_manager.iter_files(
+                            get_imgdir(setname, "daylight")
+                        ),
+                    },
+                ),
+                datasets.SplitGenerator(
+                    name=datasets.Split("indoorlight"),
+                    gen_kwargs={
+                        "path_label": dl_manager.download(
+                            get_coco(setname, "indoor-light")
+                        ),
+                        "images": dl_manager.iter_files(
+                            get_imgdir(setname, "indoor-light")
+                        ),
+                    },
+                ),
+                datasets.SplitGenerator(
+                    name=datasets.Split("infrared"),
+                    gen_kwargs={
+                        "path_label": dl_manager.download(
+                            get_coco(setname, "infrared")
+                        ),
+                        "images": dl_manager.iter_files(
+                            get_imgdir(setname, "infrared")
+                        ),
+                    },
+                ),
+                datasets.SplitGenerator(
+                    name=datasets.Split.TRAIN,
+                    gen_kwargs={
+                        "path_label": dl_manager.download(get_coco(setname, "train")),
+                        "images": dl_manager.iter_files(get_imgdir(setname, "train")),
+                    },
+                ),
+                datasets.SplitGenerator(
+                    name=datasets.Split.TEST,
+                    gen_kwargs={
+                        "path_label": dl_manager.download(get_coco(setname, "test")),
+                        "images": dl_manager.iter_files(get_imgdir(setname, "test")),
+                    },
+                ),
+            ]
+        else:
+            return [
+                datasets.SplitGenerator(
+                    name=datasets.Split.TRAIN,
+                    gen_kwargs={
+                        "path_label": dl_manager.download(get_coco(setname, "train")),
+                        "images": dl_manager.iter_files(get_imgdir(setname, "train")),
+                    },
+                ),
+                datasets.SplitGenerator(
+                    name=datasets.Split.TEST,
+                    gen_kwargs={
+                        "path_label": dl_manager.download(get_coco(setname, "test")),
+                        "images": dl_manager.iter_files(get_imgdir(setname, "test")),
+                    },
+                ),
+            ]
 
     def _generate_examples(self, path_label, images):
         """
@@ -134,19 +201,23 @@ class COLODatasets(datasets.GeneratorBasedBuilder):
         """
         labels = COCO(path_label)
         for filename in images:
-            # if the file is coco.json, skip
+            # if the file is coco.json and not an image, skip
             if not filename.endswith(".jpg"):
                 continue
             # if the file is not in the json, skip
-            img_id = labels.get_img_id(filename)
-            if img_id is None:
+            img = labels.get_img_info(filename)
+            if img is None:
                 continue
+            img_id = img["id"]
+            img_w, img_h = img["width"], img["height"]
             # read the image into bytes by the filenamt
             bytes_img = open(filename, "rb").read()
             ls_anns = labels.load_ann_by_id(img_id)
             record = {
                 "image": {"path": filename, "bytes": bytes_img},
                 "n_cows": len(ls_anns),
+                "width": img_w,
+                "height": img_h,
                 "annotations": [
                     {
                         "id": ann["id"],
@@ -178,10 +249,10 @@ class COCO:
         ls = [ann for ann in self.anns if ann["image_id"] == img_id]
         return ls
 
-    def get_img_id(self, filename):
+    def get_img_info(self, filename):
         # cut the filename from the path
         imagename = os.path.basename(filename)
         for img in self.imgs:
             if img["file_name"] == imagename:
-                return img["id"]
+                return img
         return None

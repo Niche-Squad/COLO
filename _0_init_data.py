@@ -22,10 +22,13 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 DATASET = "Niche-Squad/COLO"
 CONFIGS = [
     "0_all",
-    "1a_angle_t2s",
-    "1b_angle_s2t",
-    "2_light",
+    "1_top",
+    "2_side",
     "3_external",
+    "a1_t2s",
+    "a2_s2t",
+    "b_light",
+    "c_external",
 ]
 
 
@@ -49,15 +52,15 @@ def main(args):
             classes=["cow"],
             size_new=(640, 640),
         )
-        # clone the datasets for multi-threading
-        yolo_api = YOLO_API(dir_config)
-        for thread in range(THREADS_YOLO):
-            yolo_api.clone("run_%d" % thread)
+        # # clone the datasets for multi-threading
+        # yolo_api = YOLO_API(dir_config)
+        # for thread in range(THREADS_YOLO):
+        #     yolo_api.clone("run_%d" % thread)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dir_data")
-    parser.add_argument("--threads", default=8)
+    parser.add_argument("--threads", default=2)
     args = parser.parse_args()
     main(args)

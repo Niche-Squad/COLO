@@ -27,6 +27,7 @@ from pyniche.models.detection.yolo import NicheYOLO
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DEVICE = "cuda"
 
+
 def main(args):
     # extract arguments
     thread = "run_%d" % int(args.thread)
@@ -45,16 +46,18 @@ def main(args):
         path_task = os.path.join(DIR_OUT, "%s_%s_%d_%d" % (model[:-3], config, n, i))
         if not os.path.exists(path_task):
             break
-        i += 1  
- 
+        i += 1
+
     # 3. Initialize outputs -------------------------------------------------------------
     if not os.path.exists(FILE_OUT):
         os.makedirs(os.path.dirname(FILE_OUT), exist_ok=True)
         with open(FILE_OUT, "w") as file:
-            file.write("map5095,map50,precision,recall,f1,n_all,n_fn,n_fp,config,model,n\n")
+            file.write(
+                "map5095,map50,precision,recall,f1,n_all,n_fn,n_fp,config,model,n\n"
+            )
 
     # 4. Modeling -------------------------------------------------------------
-    trainer = NicheTrainer(device=DEVICE)     
+    trainer = NicheTrainer(device=DEVICE)
     trainer.set_model(
         modelclass=NicheYOLO,
         checkpoint=model,
@@ -69,24 +72,28 @@ def main(args):
         epochs=100,
         rm_threshold=0,
         copy_paste=0.3,
-        mixup=0.15,)
+        mixup=0.15,
+    )
 
     # 5. Evaluation -------------------------------------------------------------
     metrics = trainer.evaluate_on_test()
     metrics["config"] = config
-    metrics["model"] = model.split(".")[0] # remove .pt
+    metrics["model"] = model.split(".")[0]  # remove .pt
     metrics["n"] = n
     line = ",".join([str(value) for value in metrics.values()])
     with open(FILE_OUT, "a") as file:
         file.write(line + "\n")
-                
-            
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--thread", type=str, help="thread number")
-    parser.add_argument("--model", type=str, help="options: yolov8n, yolov8m, yolov8x")
-    parser.add_argument("--config", type=str, help="options: 1a_angle_t2s, 1b_angle_s2t, 2_light, 3_breed, 4_all")
+    parser.add_argument("--model", type=str, help="yolo checkpoint")
+    parser.add_argument(
+        "--config",
+        type=str,
+        help="options: a1_t2s, a2_s2t, b_light, c_external, 0_all, 1_top, 2_side, 3_external",
+    )
     parser.add_argument("--n", type=int, help="number of images in training set")
     args = parser.parse_args()
     main(args)

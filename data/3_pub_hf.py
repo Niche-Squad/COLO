@@ -17,9 +17,8 @@ ROOT = os.path.join(
 )
 # rm cache folder
 os.system(f"rm -rf {ROOT}/.huggingface")
-
 os.chdir(ROOT)
-setnames = [
+SETNAMES = [
     "0_all",
     "1_top",
     "2_side",
@@ -29,15 +28,21 @@ setnames = [
     "b_light",
     "c_external",
 ]
-for setname in setnames:
-    dataset = load_dataset(
-        "config.py",
-        setname,
-        trust_remote_code=True,
-        cache_dir=".huggingface",
-    )
-    dataset.push_to_hub("Niche-Squad/COLO", setname)
 
+
+def main():
+    for setname in SETNAMES:
+        dataset = load_dataset(
+            "config.py",
+            setname,
+            trust_remote_code=True,
+            cache_dir=".huggingface",
+        )
+        dataset.push_to_hub("Niche-Squad/COLO", setname)
+
+
+if __name__ == "__main__":
+    main()
 
 # # test
 # setname = "4_all"
