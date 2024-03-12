@@ -1,5 +1,3 @@
-
-
 #!/bin/bash
 #SBATCH -p dgx_normal_q
 #SBATCH --account=niche_squad
