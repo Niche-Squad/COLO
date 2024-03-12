@@ -36,11 +36,14 @@ def main(args):
     i = int(args.i)
 
     # create result file
-    DIR_OUT = os.path.join(
+    DIR_CONFIG = os.path.join(
         ROOT,
         "out",
         "yolo",
         config,
+    )
+    DIR_OUT = os.path.join(
+        DIR_CONFIG,
         "%s_%d_%d" % (model[:-3], n, i),
     )
     DIR_DATA = os.path.join(
@@ -49,7 +52,7 @@ def main(args):
         config,
     )
     FILE_OUT = os.path.join(
-        DIR_OUT,
+        DIR_CONFIG,
         "results.csv",
     )
 

@@ -67,9 +67,10 @@ def main(args):
 
     # 5. Move best.pt -------------------------------------------------------------
     os.rename(
-        os.path.join(DIR_OUT, "best.pt"),
+        os.path.join(DIR_OUT, "weights", "best.pt"),
         os.path.join(DIR_OUT, PT_NAME),
     )
+    os.remove(os.path.join(DIR_OUT, "weights", "last.pt"))
 
 
 if __name__ == "__main__":
