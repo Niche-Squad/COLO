@@ -111,6 +111,10 @@ for setname in ls_sets:
                         ls_rm.append(a)
                         continue
                     x = 0
+                else:
+                    # bbox is completely inside the cropped image, still need to check the right side
+                    if x + w > new_w:
+                        w = new_w - x
 
                 # Update the annotation
                 a["bbox"] = [x, y, w, h]
