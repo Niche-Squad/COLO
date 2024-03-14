@@ -9,12 +9,19 @@
 
 export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.6,max_split_size_mb:128
 
+# home
+dir_out=/home/niche/COLO/out/b0313/
+dir_data=/home/niche/COLO/data/
+# projects
+# dir_out=/projects/niche_squad/COLO/out/b0313/
+# dir_data=/projects/niche_squad/COLO/data/
+
 for i in {1..300}
 do
-    if [ "$1" == "1_top"]; then
+    if [ "$1" == "1_top" ]; then
         suffix="2_side"
         ls_n=(16 32 64 128 256 500)
-    elif [ "$1" == "2_side"]; then
+    elif [ "$1" == "2_side" ]; then
         suffix="1_top"
         ls_n=(16 32 64 128 256 500)
     elif [ "$1" == "3_external" ]; then
@@ -30,12 +37,15 @@ do
                 --model ${model}.pt\
                 --config $1\
                 --n $n\
-                --i $i
+                --dir_out $dir_out\
+                --dir_data $dir_data
+
             python3.9 _2_yolo.py\
                 --model ${model}_${suffix}.pt\
                 --config $1\
                 --n $n\
-                --i $i
+                --dir_out $dir_out\
+                --dir_data $dir_data
         done
     done
 

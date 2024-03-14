@@ -30,4 +30,3 @@ do
         runs/yolo_custom.sh $config
 done
 
-
