@@ -35,7 +35,7 @@ CONFIGS = [
 # 3. Download Data -------------------------------------------------------------
 def main(args):
     DIR_DATA = args.dir_data
-    THREADS_YOLO = args.threads
+    # THREADS_YOLO = args.threads
 
     for config in CONFIGS:
         dir_config = os.path.join(DIR_DATA, config)
@@ -61,6 +61,6 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dir_data")
-    parser.add_argument("--threads", default=2)
+    # parser.add_argument("--threads", default=2)
     args = parser.parse_args()
     main(args)
