@@ -24,7 +24,6 @@ from pyniche.trainer import NicheTrainer
 from pyniche.models.detection.yolo import NicheYOLO
 
 # 2. Global Variables ----------------------------------------------------------
-ROOT = os.path.dirname(os.path.abspath(__file__))
 DEVICE = "cuda"
 
 
@@ -33,28 +32,31 @@ def main(args):
     model = args.model
     config = args.config
     n = int(args.n)
-    i = int(args.i)
+    DIR_DATA_ROOT = args.dir_data
+    DIR_OUT_ROOT = args.dir_out
 
-    # create result file
-    DIR_OUT = os.path.join(
-        ROOT,
-        "out",
-        "yolo",
-        config,
-        "%s_%d_%d" % (model[:-3], n, i),
-    )
+    # 1. Set up directories -------------------------------------------------------------
     DIR_DATA = os.path.join(
-        ROOT,
-        "data",
+        DIR_DATA_ROOT,
         config,
     )
     FILE_OUT = os.path.join(
-        DIR_OUT,
+        DIR_OUT_ROOT,
+        config,
         "results.csv",
     )
+    i = 1
+    while True:
+        DIR_OUT = os.path.join(
+            DIR_OUT_ROOT,
+            config,
+            "%s_%d_%d" % (model[:-3], n, i),
+        )
+        if not os.path.exists(DIR_OUT):
+            break
+        i += 1
 
-    if not os.path.exists(DIR_OUT):
-        os.makedirs(DIR_OUT, exist_ok=True)
+    os.makedirs(DIR_OUT, exist_ok=True)
 
     # 3. Initialize outputs -------------------------------------------------------------
     if not os.path.exists(FILE_OUT):
@@ -111,9 +113,14 @@ if __name__ == "__main__":
         help="number of images in training set",
     )
     parser.add_argument(
-        "--i",
-        type=int,
-        help="iteration number",
+        "--dir_out",
+        type=str,
+        help="output directory",
+    )
+    parser.add_argument(
+        "--dir_data",
+        type=str,
+        help="data directory",
     )
     args = parser.parse_args()
     main(args)
