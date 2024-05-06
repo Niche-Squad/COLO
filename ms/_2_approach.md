@@ -2,11 +2,14 @@
 
 ## Cow Husbandry
 
-The studied cows were housed in a free-stall barn ...
+The studied cows were housed in a free-stall barn at Virginia Tech Dairy Comlex at Kentland Farm in Virginia, USA. The cow handling and image capturing were conducted following the guidelines and approval of the Virginia Tech Institutional Animal Care and Use Committee (#IACUC xxxxx).
+
+...
 
 ## Image Collection
 
-The studied images were collected using Amazon Ring camera model Spotlight Cam Battery Pro (Ring, Inc.), which provides a real-time video stream of the dairy cows.
+The studied images were collected using Amazon Ring camera model Spotlight Cam Battery Pro (Ring Inc.), which provides a real-time video stream of the dairy cows. There were three cameras being installed in the barn: Two cameras were set at the same height of 3.25 meters (10.66 feet) above the ground, capturing the same area of 33.04 square meters (355.67 square feet) in the barn. One of them faced the cows from the top view, while the other was angled downward around 40 degrees from the horizontal plane to capture the side view of the cows. Hereafter the first camera is referred to as  \textit{the top-view camera}, and the second camera is referred to as \textit{the side-view camera}. Additionally, to create an external dataset for examining the model generalization, a third camera was installed at a lower height of 2.74 meters (9.00 feet) capturing a different area of 77.63 suqare meters (835.56 square feet) in the barn. The third camera was angled 10 degree downward from the horizontal plane, providing a more challenging perspective where cows are more likely to occlude each other. This camera hereafter is referred to as \textit{the external camera}.
+Images were captured using an unofficial Ring Application Programming Interface (API) \citep{greif_dgreifring_2024} that allows automating the process of capturing snapshots from the video stream.
 
 Our study starts with the systematic acquisition of image data, focusing on targeted cattle populations within Kentland Farm at Virginia Tech.
 

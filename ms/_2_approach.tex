@@ -1,5 +1,27 @@
 \section{Materials and Methods}
 
+\subsection*{Cow Husbandry}
+
+The studied cows were housed in a free-stall barn at Virginia Tech Dairy Comlex at Kentland Farm in Virginia, USA. The cow handling and image capturing were conducted following the guidelines and approval of the Virginia Tech Institutional Animal Care and Use Committee (\#IACUC xxxxx).
+
+
+\subsection*{Image Dataset}
+
+The images in this study were collected using the Amazon Ring camera model Spotlight Cam Battery Pro (Ring Inc.), which offers a real-time video feed of dairy cows. Three cameras were installed in the barn: two at a height of 3.25 meters (10.66 feet) above ground covering an area of 33.04 square meters (355.67 square feet). One camera provided a top view while the other was angled approximately 40 degrees from the horizontal to offer a side view of the cows. These are hereafter referred to as \textit{the top-view camera} and \textit{the side-view camera}, respectively. A third camera, termed \textit{the external camera}, was set at a lower height of 2.74 meters (9.00 feet) and covered a larger area of 77.63 square meters (835.56 square feet). Positioned 10 degrees downward from the horizontal, it captured a challenging perspective prone to occlusions among cows.
+
+Images were captured using an unofficial Ring Application Programming Interface (API) \citep{greif_dgreifring_2024}, configured to record a ten-second video clip every 30 minutes continuously for 14 days. Connection instability sometimes caused image tearing, leading to unrecognizable captures. The resulting dataset was manually curated for consistent quality, comprising 504 images from \textit{the top-view camera}, 500 from \textit{the side-view camera}, and 250 from \textit{the external camera}. The lighting conditions further categorized these images: for \textit{the top-view camera}, 296 images were captured during daylight, 118 in the evening under artificial lighting, and 90 as near-infrared images without artificial light. From \textit{the side-view camera}, 113 images were taken in the evening, and 97 as near-infrared images. All images from \textit{the external camera} were captured during the day.
+
+The image annotations were conducted using an online platform, Roboflow \citep{}, to define cow positions in the images. The bounding boxes were manually drawn to enclose the cow contours, providing the coordinates of the top-left corners and the width and height of the boxes. If cows were partially occluded, the invisible parts were infered based on the adjacent visible parts. If the cow position was too far from the camera and make the important body features, such as head, tail, and legs, unrecognizable, the cow was excluded from the dataset. The final annotations were saved in the YOLO format \citep{}, where annotations were stored in a text file with one row per cow in the image, each row containing the cow's class, center coordinates, width, and height of the bounding box.
+
+\subsection*{Data Split Design}
+
+
+
+
+
+
+
+
 Our study starts with the systematic acquisition of image data, focusing on targeted cattle populations within Kentland Farm at Virginia Tech. All animal handling and media recordings were conducted following the guidelines and approval of the Virginia Tech Institutional Animal Care and Use Committee. This initial phase is succeeded by meticulous data processing steps which include the annotation and formatting of the dataset for machine learning applications. Subsequently, we proceed to fine-tune our dataset utilizing a variety of deep learning architectures. For each model, we meticulously calculate a suite of performance metrics.
 
 Building upon the results obtained from these diverse models, we construct a "summary plot." This plot is designed to elucidate the findings related to the second and third questions delineated in Section {contribution} of our paper. It will visually guide the selection of an optimal model by delineating the relationship between dataset size and achieved accuracy, as well as the computational cost versus the precision of the models. Through this analytical representation, we aim to furnish a comprehensive tool that aids researchers in making informed decisions when it comes to choosing the most suitable object detection model for their specific requirements in livestock production studies.
@@ -15,23 +37,6 @@ Moreover, cognizant of the effect camera angles and perspectives have on capturi
 
 
 The farm, hosting a diverse bovine community of over 200 individuals from the Jersey and Holstein breeds, served as an exemplary setting for our endeavor. It offered a plethora of varied scenarios and animal interactions, encapsulating the essence of a vibrant and dynamic agricultural environment. This multifaceted setting was critical in establishing a robust and comprehensive dataset reflective of the real-world complexity and variability one would expect in a livestock farming operation.
-
-\subsubsection*{Camera Setup}
-
-
-The cornerstone of our data acquisition process was the deployment of Amazon Ring Cameras, as illustrated in Figure ~\ref{fig:camera-roboflow}. These cameras, primarily acclaimed for their real-time video surveillance capabilities, were judiciously selected for their advanced functionalities that are particularly conducive to farm monitoring applications. The Amazon Ring cameras are engineered to deliver 1080HD video quality, equipped with infrared night vision for after-dark monitoring, and Live View features for real-time observation.
-
-Our rationale behind this choice stems from the device's capacity to provide high-definition 1080p video quality, ensuring that the clarity of the footage is not compromised, which is crucial for the accuracy of object detection algorithms. The integrated infrared night vision capability ensures continuous operation, day and night, which is imperative for creating a dataset that reflects all possible environmental conditions encountered in a farm setting.
-
-Moreover, the Ring camera's battery-operated design introduces a level of convenience and adaptability that is ideally suited for the agricultural context. With a rechargeable battery that can last approximately one month per charge, the system provides a sustained, maintenance-low operation. This feature is particularly advantageous in farm environments where power sources may not be readily available at various points of interest.
-
-Accessibility and manageability of the camera system are further enhanced through its compatibility with mobile and computer-based applications, allowing for remote access and control. Users receive prompt notifications on the status of the battery, thus ensuring that the camera's operation remains uninterrupted through proactive maintenance alerts for battery recharging or replacement. This negates the need for a permanent wired infrastructure and embodies a synergetic combination of high-resolution imaging capabilities with operational dexterity, making it an excellent tool for comprehensive monitoring and data collection in dynamic farm environments.
-
-We used two Amazon Ring cameras for a dual-view approach. We positioned one camera to provide a top-down perspective, while the other was configured for lateral views. This bimodal configuration was designed to grasp the full geometric profile of the cattle, an approach that is conducive to enhancing the object detection algorithms' ability to discern the cows with greater precision.
-
-The top view camera is critical in capturing the distinctive outlines and patterns of the cows' backs, which often include unique color markings and spine curvature, valuable features for individual identification and count. The side view camera, on the other hand, captures the profile shapes, including height, length, and body condition, offering a different set of attributes for the AI to analyze.
-
-Together, these perspectives ensure that the AI algorithms have access to a richer array of visual information, improving their capacity to detect and differentiate between individual animals, even in a densely populated and dynamic environment such as a farm. This dual-view methodology also significantly widens the scope of detection, reducing blind spots and ensuring that the cows can be monitored effectively regardless of their orientation or position within the pen. The result is a robust dataset that simulates the multifaceted visual inputs required for a high-performing, real-world cattle monitoring system.
 
 
 
