@@ -9,7 +9,7 @@ __pycache__
 **/.hf
 **/.huggingface
 modules/
-
+demo/
 # common files
 *.csv
 *.txt

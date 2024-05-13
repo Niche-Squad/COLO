@@ -29,7 +29,7 @@ This study aims to explore model generalization across varying environmental set
 \begin{itemize}
     \item \textbf{Model generalization is equally influenced by changes in lighting conditions and camera angles.} Should camera angles prove more impactful than lighting conditions, it would be advisable to prioritize camera placement when deploying computer vision (CV) models in new environments.
     \item \textbf{There is a positive correlation between model complexity and generalization performance.} If a highly complex model does not ensure superior performance, future studies might consider adopting less computationally demanding models that still enhance performance.
-    \item \textbf{A fine-tuned model surpasses a pre-trained model in tasks that are similar yet new.} This assumption rests on the belief that a fine-tuned model has adapted to specific features of a new task, thus offering improved performance. If this hypothesis is rejected, the fine-tuning effort may be deemed unnecessary for certain tasks.
+    \item \textbf{The choice of the initial weights has no significant impact on the model's generalization performance.} If the weights obtained from the fine-tuning process throught a similar context do not improve the transfer learning to the new environment in comparison to the pre-trained weights, the fine-tuning effort may be deemed unnecessary for certain tasks.
 \end{itemize}
 
 To facilitate these investigations, a public dataset named COws LOcalization (COLO) will be developed and made available to the community. The findings of this study are expected to provide practical guidelines for Precision Livestock Farming (PLF) researchers on deploying CV models, considering available resources and anticipated performance.
