@@ -31,76 +31,24 @@ To study how the training sample size affects the model performance in each conf
 
 To investigate whether the model performance increases with the model complexity, five YOLO-family models were investigated in thie study. Three modesl were selected from the YOLOv8 family: YOLOv8n, YOLOv8m, and YOLOv8x. They are different in the number of layers and the width of the network, resulting in model parameters of 3.2 millions (m), 25.9m, and 68.2m, respectively. The other two models were YOLOv9c and YOLOv9e, which are the latest models in the YOLO family. They are different in model configuration and have 25.3m and 57.3m parameters, respectively. All models were trained on 500 images in each of four configurations described in Study 1.
 
-\subsection*{Evaluation Metrics}
+In addition to the model performance, the computing speed was also evaluated. The training speed was recorded in miuntes per epoch, and the inference time was recorded as frames per second (FPS) on both the CPU and GPU (Apple M1 Max chip, Apple Inc.) The relationship between the model complexity and the time consumption was analyzed to provide insights into the trade-off between the model performance and the computational cost.
 
-The studied models are all object detection models, which output a list of vectors for each image. Each vector represents a detection of a cow in the image and has a length of 6, including the class index, the confidence
-The model performance was evaluated using four metrics: precision and recall at confidence thresholds of 0.25 and IoU of 0.5., mean average precision (mAP) at the intersection over union (IoU) threshold of 0.5 ($mAP_{0.5}$), and averaged mAP at varying IoU thresholds ranging from 0.5 to 0.95 ($mAP_{0.5-0.95}$). Confidence threshold is the minimum confidence score required for a prediction to be considered as a positive prediction, and IoU is the ratio
+\subsection*{Study 3: Assessing the advantages of using fine-tuned model over the pre-trained model as initial model weights}
 
-
-
-
-Building upon the results obtained from these diverse models, we construct a "summary plot." This plot is designed to elucidate the findings related to the second and third questions delineated in Section {contribution} of our paper. It will visually guide the selection of an optimal model by delineating the relationship between dataset size and achieved accuracy, as well as the computational cost versus the precision of the models. Through this analytical representation, we aim to furnish a comprehensive tool that aids researchers in making informed decisions when it comes to choosing the most suitable object detection model for their specific requirements in livestock production studies.
-
-\subsubsection*{Data Annotation and Formation}
-
-- Talk about how the data was collected using pipes and Amazon Ring Cameras
-
-- How the data is annotated on Roboflow
-The methodological rigor involved in data preparation is vital for the integrity of our machine learning model's training process. Here is a clear outline of the steps executed in preparing the dataset for cow detection in our investigation:
-
-\begin{enumerate}
-    \item \textbf{Frame Extraction:} We utilized a customized Python script for the extraction of frames from the video streams, converting them into a series of static images. To guarantee uniformity across the dataset, we extracted frames at regular one-second intervals. This process yielded `n' distinct images, which were then allocated to training, validation, and testing datasets for the subsequent stages of our machine learning endeavor.
+Having a model trained on a smaller but specific dataset is expected to have a better performance in similar specific tasks than a model pre-trained on a larger but general dataset (e.g., COCO dataset). However, such advantages may not necessarily persist as the training sample size increases. Having equally enough samples for both the pre-trained and fine-tuned models could diminish the performance gap between the two models. To investigate this hypothesis,
 
 
-    \item \textbf{Annotation with Roboflow:} We uploaded the frames onto Roboflow, a versatile annotation platform. This tool enabled our team to annotate images by meticulously outlining cows with bounding boxes, ensuring that the AI model can learn to identify the target objects effectively. The annotated frames are exemplified in Figure ~\ref{fig:camera-roboflow}.
-
-    \item \textbf{Annotation Format Selection:} Roboflow's robust export options allowed us to obtain annotations in various formats suitable for different model architectures. We primarily opted for COCO and YOLOv5 formats, both widely recognized for their compatibility with state-of-the-art object detection algorithms.
-
-    \item \textbf{Data Storage and Maintenance:} Post-annotation, we stored the images in the universally accepted JPG format. Accompanying these images, the corresponding annotation files were meticulously cataloged, readying the dataset for the intricate process of model training and subsequent evaluation.
-\end{enumerate}
-By adhering to these steps, we ensured the creation of a high-quality, standardized dataset poised for deployment in the development of an AI-powered cow detection system, geared towards enhancing the precision and efficiency of livestock management.
-
-\subsection*{Simulation Design}
-
-\subsubsection*{Data Splits}
-We aim to thoroughly investigate model generalization across diverse conditions within livestock environments, specifically focusing on cattle localization. To achieve this, we meticulously designed and organized our dataset into five distinct configurations, each representing unique conditions under which the cattle were captured. These configurations are critical for evaluating the robustness and adaptability of object detection models, particularly in terms of their ability to generalize from one set of conditions to another. Below, we detail the dataset configurations and the rationale behind our data split strategy.
-
-Dataset Configurations:
-\begin{enumerate}
-    \item\textbf{Top View:} Images captured from an overhead perspective, providing a comprehensive view of the livestock area.
-    \item\textbf{Side View:} Images taken at a 60-degree (approx.) angle to the ground, offering a profile perspective of the cattle.
-    \item\textbf{Daylight:} Images captured during daylight conditions from both the top and side views, ensuring natural lighting.
-    \item\textbf{Nighttime:} Images obtained during nighttime from both the top and side views, with lighting conditions significantly reduced.
-    \item\textbf{Breed Specific:} A subset of images exclusively featuring the Holstein breed, allowing for breed-specific model training.
-\end{enumerate}
-Training and Testing Strategy
-To rigorously assess model generalization, we employed a cross-testing methodology where models were trained on one dataset configuration and tested on another. This approach enabled us to isolate and understand the impact of various factors—such as viewing angle, lighting conditions, and breed variation—on model performance. The specific training and testing scenarios were as follows:
-\begin{enumerate}
-    \item\textbf{Viewing Angle Generalization:} Models were trained on the Top View dataset and tested on the Side View dataset, and vice versa. This setup assesses the model's ability to adapt to changes in perspective.
-    \item\textbf{Lighting Condition Generalization:} Models trained on Daylight data were tested on Nighttime data to evaluate performance under varying lighting conditions, and vice versa.
-    \item\textbf{Breed Variation Generalization:} Models trained on the Breed Specific (Holstein) dataset were tested on a mixed-breed dataset (Holstein and Jersey), assessing the impact of breed diversity on detection accuracy.
-    \item\textbf{Comprehensive Generalization:} Finally, models were trained on a combination of all dataset configurations to examine overall generalization capabilities across viewing angles, lighting conditions, and breed variations.
-\end{enumerate}
-This structured approach to data split and testing is designed to provide insights into the extent to which object detection models, trained under specific conditions, can accurately generalize to different, untrained conditions. By systematically varying training and testing datasets, we aim to uncover potential limitations and strengths of current object detection technologies in the context of livestock monitoring, contributing valuable knowledge towards the development of more robust and adaptable solutions in precision agriculture.
-
-\subsubsection*{Objective 1: How model performance is decomposed by different factors}
-To investigate the model generalization. Factors such as lightning..
-
-Each data configuration
-
-\subsubsection*{Objective 2: How a fine-tuned model performed on a new dataset}
-
-\subsection*{Model Training and Evaluation}
-
-\subsubsection*{Trianing hyperparameters}
-
-- how to cross validation is Design with different sample Size
-- Iteration
-- Evaluation metrics
-
-\subsubsection*{Data Augmentation}
-
-\subsubsection*{Model evaluation and cross validation}
 
 
-% -------------------
+
+
+
+\subsection*{Model Training}
+
+
+
+\subsection*{Model Evaluation}
+
+The examined YOLO models are object detection models that return positions of detected objects (i.e., cows in this study) for the evaluated images. The detections are represented by a list of boudning boxes. Regardless of specific procedures among YOLO variants for computational efficiency, such as YOLOv8 that integrate objectness scores and conditional class probabilities into a single confidence score, each detection generally consist of $4+c$ elements: the xy-coordinates, width, and height of the bounding box, and the $c$ confidence scores indicating the probability of the object belonging to each of the $c$ classes. The class with the highest confidence score is considered the predicted class of the object. To evaluate the model performance, two aspects are considered: the localization accuracy and the classification accuracy. The localization accuracy is measured by the Intersection over Union (IoU) between the predicted bounding box and the ground truth bounding box. On the other hand, the classification accuracy is measured by the precision and recall given the confidence threshold. If the confidence score of a detection is higher than the threshold, the detection is considered as a positive detection. Otherwise, the detection is neglected. Combining the localization and classification accuracy, the mean Average Precision ($mAP$) averaged the area under the precision-recall curve across all the classes. The curve is generated by varying the confidence threshold from 0 to 1 given a IoU threshold. In this study, four metrics were used in the evaluation: the precision and recall at the confidence threshold of 0.25 and IoU threshold of 0.5, the mAP at the IoU threshold of 0.5 (noted as $mAP_{0.5}$), and the averaged mAP at varying IoU thresholds ranging from 0.5 to 0.95 (noted as $mAP_{0.5-0.95}$).
+
+
