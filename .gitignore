@@ -84,4 +84,5 @@ PyPI-Recovery-Codes-poissonfish-2024-02-07T22_31_52.500609.txt
 *.fdb_latexmk
 *.gz
 *.files
-*.blg
+**/main.blg
+*.fls

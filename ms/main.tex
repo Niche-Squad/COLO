@@ -8,14 +8,18 @@
 \usepackage{url}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
 \usepackage{amsfonts}       % blackboard math symbols
+\usepackage{amsmath}        % popular math symbols
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
 \usepackage{lipsum}		% Can be removed after putting your text content
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage{natbib}
 \usepackage{doi}
 \usepackage{setspace} % double spacing
 \usepackage{lineno} % line numbering
+\graphicspath{ {.} }
+
 
 \title{An Model Generalization Study in Localizing Indoor Cows with COw LOcalization (COLO) dataset}
 
@@ -55,19 +59,18 @@
 \input{contents/_3_results.tex}
 \input{contents/_4_discussion.tex}
 
-
-\section{Conclusion}
-Your conclusion here
-
 \section*{Acknowledgments}
-This was was supported in part by......
+The authors acknowledge Advanced Research Computing at Virginia Tech for providing computational resources and technical support that have contributed to the results reported within this paper. URL: https://arc.vt.edu/
+
 
 %Bibliography
 \bibliographystyle{unsrt}
 \bibliography{COLO}
 
+
 % just for references
 \newpage
-\input{_template.tex}
+
+\input{contents/_9_appendix.tex}
 
 \end{document}
