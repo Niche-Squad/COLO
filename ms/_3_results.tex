@@ -7,7 +7,7 @@ The organize dataset is published on the huggingface dataset repository. It's or
 \subsection*{Evaluation Metrics}
 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{figure_s1.jpg}
     \caption{Examples of the annotated images.}
@@ -19,7 +19,7 @@ The organize dataset is published on the huggingface dataset repository. It's or
 \subsection*{Study 1: The changes in camera view angles dramatically affect the model performance}
 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{figure_3.jpg}
     \caption{Examples of the annotated images.}
@@ -32,7 +32,7 @@ The baseline training configuation show a good generalization capabiltiy, in whi
 \subsection*{Study 2: A higher model complexity does not always lead to better performance}
 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{figure_4.jpg}
     \caption{Examples of the annotated images.}
@@ -42,20 +42,22 @@ The baseline training configuation show a good generalization capabiltiy, in whi
 
 From the study, it is found that the xxx of the training configuration affects the relationship between the model complexity and the performance. Based on the study 1, predicting images from the side view based on the model trained on from the top-view camera is the most challenging tasks. In this configuration, increasing the model complexity, except for few cases, the model generalization always became worse than the simple models are. However, in other configurations that show better generalization in the Study 1, the peak performance did not always found from the most complex model. For example, in the baseline, the model that performed that best is YOLOv9e in metrics of $\text{mAP@{0.5:0.95}}$, $\text{mAP@{0.5}}$, and recall. And YOLOv8m performed the best in precision. Neither of the model has the most parameter counts compared to YOLOv8x. It is also worth noting that, different model architecture show different trend in the performance over model complexity. The YOLOv8-family models more likely to have the best performance with the mid-sized model (i.e., YOLOv8m). While in YOLOv9, larger models usually performed better. Hence, the study concluded that the model performacne is determined by both training configuration and the model archtecture.
 
+The required computational resources can be evaluated from training time (Figure ~\ref{fig:resources}a), inference time (Figure ~\ref{fig:resources}b), adn the memory storage sizes (Figure ~\ref{fig:resources}c). The training time was presented as a ratio of the actual training time over the baseline, which is the time required to train the YOLOv8n model with only 32 samples. The results suggested that using the largest model, YOLOv8x, that with 20 times more parameters, the training time increased by 4 to 6 times based on the training sample size. Additionally, the YOLOv9 models overall required more training time and slower inference frames per seconds (FPS) compared to the YOLOv8 models. The gap of the training time was expanded as the training samples increased. The inference time was calculated as the average FPS in a batch of 64 images. Running the models on CPU with the smallest model (i.e., YOLOv8n), was found to be slower than running the largest model (i.e., YOLOv8x) on GPU, where the FPS were 19.77 and 29.21, respectively. The importance of high FPS models was highlighted in this study, as a real-time inference usually requires a model with FPS higher than 30. Implementing these YOLO models on CPU may not meet this goal according to the result.
 
-\begin{figure}[h]
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=.6\textwidth]{figure_6.jpg}
+    \includegraphics[width=1\textwidth]{figure_6.jpg}
     \caption{Examples of the annotated images.}
-    \label{fig:inference}
+    \label{fig:resources}
 \end{figure}
 
 
-\subsection*{Study 3: The advantages started to disminish early as the training sample sizes when the model is simple}
+\subsection*{Study 3: The advantages of fine-tuning the model is limited when the model is simple}
 
+The results presented in Figure \ref{fig:finetune} indicate that the benefit of using fine-tuned initial weights is minimal for simpler models. Specifically, when employing YOLOv8n, the performance difference between the default and fine-tuned weights was insignificant when fine-tuning data from the Top-View Camera and Side-View Camera. However, as the model complexity increased, a greater number of fine-tuning samples were required for the two different initial weights to achieve similar performance. For instance, in the case of YOLOv9e, the performance gap was eliminated when the number of fine-tuning samples reached 128 and 64 for the Top-View Camera and Side-View Camera data sources, respectively. The similar trend was observed from the External camera, where a significant performance gap of more than 25\% in mAP50:95 was observed for YOLOv9e when the sample size was 16. It is also noted that, although the performance gap was closed to zero from the Top-View Camera and Side-View Camera data sources, the gap was never closed for the External camera. In summary, using fine-tuned initial weights is only beneficial for models with larger parameter sizes (e.g., YOLOv8x, YOLOv9c, and YOLOv9e) and when limited training samples are available.
 
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{figure_5.jpg}
     \caption{Examples of the annotated images.}

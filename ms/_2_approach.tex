@@ -60,8 +60,25 @@ In addition to the model performance, the computing speed was also evaluated. Th
 
 \subsection*{Study 3: Assessing the advantages of using fine-tuned model over the pre-trained model as initial model weights}
 
-Most models are released with the pre-trained weights, which were obtained from the large dataset containing millions of object instances (e.g., COCO\citep{} and ImageNet\citep{}). The pre-trained models have general capability in recognizing common objects such as vehicles, animals, and household items. When the model is required to recognize specific objects (i.e., cows in this study), having a model trained on a smaller but specific dataset is expected to have a better performance. However, such advantages may not necessarily persist as the training sample size increases. Having equally enough samples for both the pre-trained and fine-tuned models could diminish the performance gap between the two models. To investigate this hypothesis, we conducted a cross-validation between the top-view and side-view images. Two training/testing configurations were considered: the model was trained on the top-view images and tested on the side-view images, and vice versa. Five models, which are YOLOv8n, YOLOv8m, YOLOv8x, YOLOv9c, and YOLOv9e, were trained on 16, 64, 128, 256, and 512 images, respectively. The performance of the models was evaluated using $\text{mAP@{0.5:0.95}}$. 
+Most models are released with the pre-trained weights, which were obtained from the large dataset containing millions of object instances (e.g., COCO\citep{} and ImageNet\citep{}). The pre-trained models have general capability in recognizing common objects such as vehicles, animals, and household items. When the model is required to recognize specific objects (i.e., cows in this study), having a model trained on a smaller but specific dataset is expected to have a better performance. However, such advantages may not necessarily persist as the training sample size increases. Having equally enough samples for both the pre-trained and fine-tuned models could diminish the performance gap between the two models. To investigate this hypothesis, this study evaluated the performance of the fine-tuned models with two different initial weights. The first initial weight was the default weights from the pre-trained model on the COCO dataset, while the second initial weight was the weights from the fine-tuned model on the opposite view angle. The cross-validation settings were described in the Table ~\ref{tab:configuration}.
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccl}
+        \toprule
+        \textbf{Case} &\textbf{Finetuning Data Sources} & \textbf{Initial Weights} \\
+        \midrule
+        1 &Top-View Camera & COCO (default) \\
+        2 &Top-View Camera & Side-View Camera \\
+        3 &Side-View Camera & COCO (default) \\
+        4 &Side-View Camera & Top-View Camera \\
+        \bottomrule
+    \end{tabular}
+    \caption{Train and test data configurations with and initial weight criteria.}
+    \label{tab:configuration}
+\end{table}
+
+The backbones of the all models (i.e., YOLOv8n, YOLOv8m, YOLOv8x, YOLOv9c, and YOLOv9e) were fine-tuned across different training sample sizes, which are 16, 32, 64, 128, 256, and 500. The goal was to determine whether the advantage of using the fine-tuned weights persist under the interaction between the model complexity and different fine-tuning samples. The performance of the models was evaluated using $\text{mAP@{0.5:0.95}}$.
 
 
 

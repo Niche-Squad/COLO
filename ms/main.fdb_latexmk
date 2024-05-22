@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1716351670 "main.aux" "main.bbl" "main" 1716351685
+["bibtex main"] 1716392668 "main.aux" "main.bbl" "main" 1716392669
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/base/unsrt.bst" 1292289607 18030 1376b4b231b50c66211e47e42eda2875 ""
   "COLO.bib" 1713839875 11364 d7933df00b3bf1de03482eba1a5f34b8 ""
-  "main.aux" 1716351685 4044 43e6e1c8879ff58e82504e8c1a85ac92 "pdflatex"
+  "main.aux" 1716392669 4340 e1b1d07f207368af66040d58a111ba97 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1716351684 "/Users/niche/_03_Papers/2024/COLO/ms/main.tex" "main.pdf" "main" 1716351685
+["pdflatex"] 1716392668 "/Users/niche/_03_Papers/2024/COLO/ms/main.tex" "main.pdf" "main" 1716392669
   "/Users/niche/_03_Papers/2024/COLO/ms/main.tex" 1716351670 2268 10e2b57433308fe13695267b5bfc6c1c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
@@ -144,8 +144,8 @@
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "_0_abstract.tex" 1711682441 148 7c1495ec401faab2e88ed1c0dfa22ab9 ""
   "_1_introduction.tex" 1716149597 8766 665fd8b3d0fdb2382795a7617263361f ""
-  "_2_approach.tex" 1716351329 11784 8cbb4d274328153a7066152febd4e5dd ""
-  "_3_results.tex" 1716351684 4093 4842d65ab63bb88360c425baa0fa87fa ""
+  "_2_approach.tex" 1716391289 12696 5a574965f4f544ba79189fd39a0810a2 ""
+  "_3_results.tex" 1716392666 6607 1a5e8d2dc9c9bac8f3723c431d03f550 ""
   "_4_discussion.tex" 1711607956 250 62541e4d8b4c776228e0d4d339f7d1bb ""
   "_9_appendix.tex" 1716173629 1505 feb76675c249da4d2ade15e5928bdf59 ""
   "arxiv.sty" 1709111620 7641 73d629a9ecdf79da8148f7f0df8c6662 ""
@@ -154,11 +154,11 @@
   "figure_3.jpg" 1716350840 1363055 cb783e45374a5c1c6ebbcdc261d55472 ""
   "figure_4.jpg" 1716350851 1942047 1f37ce431fa93cbc9aa74c4c15a33116 ""
   "figure_5.jpg" 1716350894 2000185 ad88c958df327469e2360dfa366b3236 ""
-  "figure_6.jpg" 1716350878 359746 b4675bde14784e53a72567b6ded418b5 ""
+  "figure_6.jpg" 1716388444 1447027 12de5c03f2349f9c4d808cb28042d768 ""
   "figure_s1.jpg" 1716350908 1611510 803005e5ed1afef03c61e10d90e93af1 ""
-  "main.aux" 1716351685 4044 43e6e1c8879ff58e82504e8c1a85ac92 "pdflatex"
-  "main.bbl" 1716351670 178 78e6643f2ef3fb983f9d0c06197572f8 "bibtex main"
-  "main.out" 1716351685 1669 45f84d2808572e558ec9466388c78dfe "pdflatex"
+  "main.aux" 1716392669 4340 e1b1d07f207368af66040d58a111ba97 "pdflatex"
+  "main.bbl" 1716392668 178 78e6643f2ef3fb983f9d0c06197572f8 "bibtex main"
+  "main.out" 1716392669 1669 45f84d2808572e558ec9466388c78dfe "pdflatex"
   "main.tex" 1716351670 2268 10e2b57433308fe13695267b5bfc6c1c ""
   "orcid.pdf" 1709111617 12397 91d5d508c0f091a7cee0cca88f1680c0 ""
   (generated)
