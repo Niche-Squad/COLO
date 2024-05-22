@@ -891,10 +891,6 @@ INPUT ./figure_5.jpg
 INPUT figure_5.jpg
 INPUT ./figure_5.jpg
 INPUT ./figure_5.jpg
-INPUT ./_4_discussion.tex
-INPUT _4_discussion.tex
-INPUT ./_4_discussion.tex
-INPUT _4_discussion.tex
 INPUT ./main.bbl
 INPUT main.bbl
 INPUT ./main.bbl
