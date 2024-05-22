@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Define the models and devices
-# models=("yolov8n.pt" "yolov8m.pt" "yolov8x.pt" "yolov9c.pt" "yolov9e.pt")
-models=("yolov9c.pt" "yolov9e.pt")
+models=("yolov8n.pt" "yolov8m.pt" "yolov8x.pt" "yolov9c.pt" "yolov9e.pt")
 devices=("cpu" "mps")
 
 # Source directory for input data

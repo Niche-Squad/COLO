@@ -5,6 +5,9 @@ import os
 import seaborn as sns
 
 
+FILE_OUT = os.path.join("out", "b0313", "fig5_inference.png")
+
+
 def find_init(lines):
     s = []
     for line in lines:
@@ -91,4 +94,4 @@ g.set(
 g.figure.subplots_adjust(right=1.2)
 g.add_legend()
 g.figure.set_size_inches(8, 4)
-g.figure.savefig(os.path.join(file_out, "fig5_inference.png"), dpi=300)
+g.figure.savefig(FILE_OUT, dpi=300)

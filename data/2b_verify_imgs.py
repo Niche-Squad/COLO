@@ -29,6 +29,7 @@ def get_splits(setname):
     splits = [s for s in os.listdir(os.path.join(ROOT, setname)) if "DS_Store" not in s]
     return splits
 
+
 N_IMGS = 3
 LS_SETS = [
     # "0_all",
@@ -57,4 +58,3 @@ for s in LS_SETS:
         ls_verify = [f for f in os.listdir(dir_src) if "_verify_" in f]
         for f in ls_verify:
             os.remove(os.path.join(dir_src, f))
-

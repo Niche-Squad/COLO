@@ -28,6 +28,7 @@ demo/
 *.bmp
 *.zip
 *.tar.gz
+*.pdf
 # log
 *.log
 *.err
@@ -78,6 +79,7 @@ PyPI-Recovery-Codes-poissonfish-2024-02-07T22_31_52.500609.txt
 !**/demo/**
 !requirements.txt
 !modules/ring_capture/packages/**
+!ms/*.jpg
 
 # latex
 *.aux

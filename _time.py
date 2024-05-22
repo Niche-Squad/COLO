@@ -40,19 +40,22 @@ def get_time_from_tf(filename):
     training_time_seconds = end_time - start_time
     return training_time_seconds
 
-def main_train():
+
+def main():
     FILE_OUT = "time_table.csv"
     with open(FILE_OUT, "w") as f:
         f.write("model,n,time,params,location\n")
     files = pd.read_csv("event_paths.csv")
 
-    sizes = dict({
-        "yolov8n": 3.2,
-        "yolov8m": 25.9,
-        "yolov8x": 68.2,
-        "yolov9c": 25.3,
-        "yolov9e": 57.3,
-    })
+    sizes = dict(
+        {
+            "yolov8n": 3.2,
+            "yolov8m": 25.9,
+            "yolov8x": 68.2,
+            "yolov9c": 25.3,
+            "yolov9e": 57.3,
+        }
+    )
     for row in files.iterrows():
         filename = row[1][0]
         items = filename.split("/")[-2].split("_")
@@ -65,3 +68,6 @@ def main_train():
         with open(FILE_OUT, "a") as f:
             f.write(f"{model},{n},{time},{params},{cate}\n")
 
+
+if __name__ == "__main__":
+    main()
