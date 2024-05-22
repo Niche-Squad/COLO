@@ -25,7 +25,7 @@ import os
 
 
 # load
-def get_time(filename):
+def get_time_from_tf(filename):
     # Initialize an accumulator to load the event file
     ea = event_accumulator.EventAccumulator(filename)
     ea.Reload()
@@ -40,27 +40,28 @@ def get_time(filename):
     training_time_seconds = end_time - start_time
     return training_time_seconds
 
+def main_train():
+    FILE_OUT = "time_table.csv"
+    with open(FILE_OUT, "w") as f:
+        f.write("model,n,time,params,location\n")
+    files = pd.read_csv("event_paths.csv")
 
-FILE_OUT = "time_table.csv"
-with open(FILE_OUT, "w") as f:
-    f.write("model,n,time,params,location\n")
-files = pd.read_csv("event_paths.csv")
+    sizes = dict({
+        "yolov8n": 3.2,
+        "yolov8m": 25.9,
+        "yolov8x": 68.2,
+        "yolov9c": 25.3,
+        "yolov9e": 57.3,
+    })
+    for row in files.iterrows():
+        filename = row[1][0]
+        items = filename.split("/")[-2].split("_")
+        # extract
+        cate = "home" if "home" in filename else "projects"
+        time = get_time_from_tf(filename)
+        model = items[0]
+        n = items[-2]
+        params = sizes[model]
+        with open(FILE_OUT, "a") as f:
+            f.write(f"{model},{n},{time},{params},{cate}\n")
 
-sizes = dict({
-    "yolov8n": 3.2,
-    "yolov8m": 25.9,
-    "yolov8x": 68.2,
-    "yolov9c": 25.3,
-    "yolov9e": 57.3,
-})
-for row in files.iterrows():
-    filename = row[1][0]
-    items = filename.split("/")[-2].split("_")
-    # extract
-    cate = "home" if "home" in filename else "projects"
-    time = get_time(filename)
-    model = items[0]
-    n = items[-2]
-    params = sizes[model]
-    with open(FILE_OUT, "a") as f:
-        f.write(f"{model},{n},{time},{params},{cate}\n")
