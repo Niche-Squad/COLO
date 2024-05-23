@@ -42,7 +42,6 @@ cowsformer = datasets.load_dataset(
 )
 print(cowsformer)
 
-
 # COCO
 print("------- VERIFYING COCO -------")
 hf_to_coco(

@@ -2,10 +2,12 @@
 
 \subsection*{Public Dataset: COLO}
 
-The organize dataset is published on the huggingface dataset repository. It's organized in two formats: YOLO and COCO
+The COLO dataset is organized in YOLO and COCO formats and published on the online platforms GitHub (https://github.com/Niche-Squad/COLO/) and Huggingface (https://huggingface.co/datasets/Niche-Squad/COLO). The dataset consists of eight configurations: \textit{0\_all}, \textit{1\_top}, \textit{2\_side}, \textit{3\_external}, \textit{a1\_t2s}, \textit{a2\_s2t}, \textit{b\_light}, and \textit{c\_external}. The \textit{0\_all} configuration serves as the baseline for this study, featuring non-overlapping training and testing images collected from both the Top-View Camera and Side-View Camera. The \textit{1\_top}, \textit{2\_side}, and \textit{3\_external} configurations contain images from their respective cameras. The \textit{a1\_t2s}, \textit{a2\_s2t}, and \textit{b\_light} configurations include training/testing splits for the Top2Side, Side2Top, and Day2Night scenarios, respectively. The \textit{c\_external} configuration features training images from the Top-View and Side-View Cameras, with testing images from the External Camera. The dataset hosted on GitHub is available as a compressed zip file for public access. In contrast, the dataset on Huggingface requires the Python package "datasets" \citep{} to download. The Huggingface version offers additional functionality to resize the images and annotations to specific resolutions, providing greater flexibility for various applications.
+
 
 \subsection*{Evaluation Metrics}
 
+The model performance of each combination of training configuration, model architecture, and training sample size was measured in four metrics: $\text{mAP@{0.5:0.95}}$, $\text{mAP@{0.5}}$, precision, and recall. A pair-wise comparision of the metrics was presented (Figure ~\ref{fig:metrics}) to illustrate the relationship between the metrics. The $\text{mAP@{0.5:0.95}}$ is the most stigenant metric, which requires the model to have both high positioning accuracy (i.e., high IoU) and high precision. The $\text{mAP@{0.5}}$ is a more lenient metric, which only requires the model to have a high confidence in the prediction. (not finished)
 
 \begin{figure}[H]
     \centering
