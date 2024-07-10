@@ -15,7 +15,7 @@ In summary, the Evaluation Metrics section provides a comprehensive framework fo
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\textwidth]{Figure/figure_s1.jpg}
+    \includegraphics[width=1\textwidth]{figure_s1.jpg}
     \caption{Pairwise correlation among different evaluation metrics.}
     \label{fig:metrics}
 \end{figure}
@@ -49,7 +49,7 @@ In summary, the Evaluation Metrics section outlines a robust framework for asses
 The baseline training configuration showed good generalization capability, with over 90\% of the predictions correctly positioning cows at the 50\% IoU criterion ($\text{mAP@{0.5}}$). Further, the generalization performance can be dissected into changes in view angles (i.e., Top2Side and Side2Top) and lighting conditions (i.e., Day2Night). Changes in lighting conditions did not dramatically affect model performance across all four metrics. However, changing camera views resulted in a performance drop of approximately 30\% and 60\% in $\text{mAP@{0.5}}$ for the Side2Top and Top2Side configurations, respectively. Across all metrics and training sample sizes, the Top2Side configuration consistently showed the worst performance.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{Figure/figure_3.jpg}
+    \includegraphics[width=0.8\textwidth]{figure_3.jpg}
     \caption{The performance of YOLOv9e across various data configurations and training sample sizes. In the upper left and right corners, the plots display the metrics mAP50:95 and mAP50, respectively, for different training samples across diverse data configurations. The lower left and right plots depict precision and recall values, again for varying training samples and configurations.}
     \label{fig:schemes}
     \end{figure}
@@ -70,7 +70,7 @@ On the other hand, the models perform suboptimally in scenarios involving change
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1\textwidth]{Figure/figure_4.jpg}
+\includegraphics[width=1\textwidth]{figure_4.jpg}
 \caption{The performance of YOLOv8 and YOLOv9 models across various model parameters and data configurations, evaluated using four metrics: mAP 50:95, mAP 50, precision, and recall. Each column indicates a different data configuration, starting from top left to bottom right: Baseline', Day2Night', Side2Top', Top2Side', and `External'. The horizontal axis of all plots indicates the number of model parameters.}
 \label{fig:models}
 \end{figure}
@@ -95,7 +95,7 @@ Overall, our findings emphasize that higher model complexity does not necessaril
 The results presented in Figure \ref{fig:finetune} indicate that the benefit of using fine-tuned initial weights is minimal for simpler models. Specifically, when employing YOLOv8n, the performance difference between the default and fine-tuned weights was insignificant when fine-tuning data from the Top-View Camera and Side-View Camera. However, as model complexity increased, a greater number of fine-tuning samples were required for the two different initial weights to achieve similar performance. For instance, in the case of YOLOv9e, the performance gap was eliminated when the number of fine-tuning samples reached 128 and 64 for the Top-View Camera and Side-View Camera data sources, respectively. A similar trend was observed with the External camera, where a significant performance gap of more than 25\% in $\text{mAP@{0.5:0.95}}$ was observed for YOLOv9e when the sample size was 16. It is also noted that, although the performance gap was closed to zero for the Top-View Camera and Side-View Camera data sources, the gap was never closed for the External camera. 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\textwidth]{Figure/figure_5.jpg}
+    \includegraphics[width=1\textwidth]{figure_5.jpg}
     \caption{Variation in mAP50:95 across different models, sample sizes, and weight initialization conditions. Green lines represent instances where weights were initialized with fine-tuned models (cases 3 and 4, as detailed in Table ~\ref{tab:configuration}), while orange lines indicate scenarios employing default weights (trained with the COCO dataset). The horizontal axis indicates the number of training samples used for fine-tuning.}
     \label{fig:finetune}
 \end{figure}
