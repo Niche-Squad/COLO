@@ -1,7 +1,6 @@
 \section{Discussion}
-
-
-\subsection{Potential causes for the performance drop in camera view points}
+%%%%Why the lighting condition has less impact on the performance drop?
+\subsection{Analysis of model performance across different data configurations}
 
 Figure ~\ref{fig:model-performance} provides a comparative analysis of model behavior under various data configurations. It is clear that the `b\_light' configuration shown a much better performance relative to the heterogeneous viewpoint-oriented configurations `a1\_t2s' and `a2\_s2t'.
 
@@ -11,9 +10,14 @@ On the other hand, the models perform suboptimally in scenarios involving change
 
 The analysis of Figure ~\ref{fig:finetune vs raw model} provides another insight on the performance across homogeneous viewpoint data configurations, specifically `1\_top' and `2\_side'. The data demonstrates that the `1\_top' configuration consistently yields higher mAP values regardless of the training sample size and weight initialization conditions. This implies that the `2\_side' configuration, where both training and test images are captured from the side view, presents a more formidable challenge for cow detection compared to the `1\_top' configuration.
 
-Similarly to the discussion of the difference between lighting and viewpoint in the images, the side view poses difficulties due to occlusions by neighboring cows and additional distractions, such as obstacles in aisles and fences. Furthermore, cows located further away in side-view images may not be as visible, complicating feature extraction. In contrast, the `1\_top' configuration benefits from an unobstructed aerial perspective, ensuring that the top view of all cow instances is clearly visible and free from such obstructions. This distinction in visibility between the two configurations contributes to the ease of feature extraction and ultimately, the performance disparity observed.
+Similarly to the discussion of the difference between lighting and viewpoint in the images, the side view poses difficulties due to occlusions by neighboring cows and additional distractions, such as obstacles in aisles and fences. Furthermore, cows located further away in side-view images may not be as visible, complicating feature extraction. In contrast, the `1\_top' configuration benefits from an unobstructed aerial perspective, ensuring that the top view of all cow instances is clearly visible and free from such obstructions. This distinction in visibility between the two configurations contributes to the ease of feature extraction and ultimately, the performance disparity observed. 
 
-\subsection{The choice of model complexity is task-specific}
+
+
+
+%%%Is complex model architecture always better?
+\subsection{Analysis of model performance across different model parameters}
+
 
 The results from the Figure ~\ref{fig:model complexcity} shows the relationship between the number of model parameters, and object detection performance across various data configurations for YOLOv8 and YOLOv9 models. 
 
@@ -21,7 +25,21 @@ When trained on the COCO dataset \cite{lin2014microsoft}, both YOLOv8 and YOLOv9
 
 The prior work's findings were based on the COCO dataset, which encompasses 80 classes and predominantly features standalone images. In contrast, our study utilizes an indoor farm dataset focused exclusively on a single class: cows. Consequently, the model may not require as many parameters to optimally discern the necessary features for cow detection. This reminds the research to not only deploy one model even it is known for the best performance on a public dataset. The generalization performance maybe case-specific.
 
+
+
+
+
+
+
+
+%Explain the interaction between YOLOv8 and v9: when increasing the number of parameters in V8, the performance is not always improved. Except for the dataset "a1\_t2s",  the peak performance was observed on YOLOv8m which has only 23 millions of parameters. However, In V9, an improvement can be expected even when the parameters are increased to more than 50 million (i.e., YOLOv9e). This could be explained by the fundamental difference of the model architecture.
+
+%Also, "a1\_t2s" is considered to be the most difficult task among all dataset according to the generalization performance observed in this study. An opposite trend that V9 is not a better model was also observed in this dataset. This outcome might suggest that when the task is too difficult, the superior capability of the model may no longer hold in such case. This reminds the research to not only deploy one model even it is known for the best performance on a public dataset. The generalization performance maybe case-specific.
+
+%%%%How does the model generalization study help in real-world applications?
 \subsection{Does custom weight initialization for model finetuning always necessary?}
+
+
 
 In Section ~\ref{sec:pre-fine}, we examine the impact of different weight initialization strategies on the fine-tuning of models, as detailed in Figure ~\ref{fig:finetune vs raw model}. Our findings indicate that for YOLO models with fewer parameters, such as YOLOv8n and YOLOv8m, the choice of weight initialization does not make a significant different in fine-tuning performance. In contrast, larger models like YOLOv8x, YOLOv9c, and YOLOv9e exhibit improved performance when weights are initialized from a model that has been previously fine-tuned, as highlighted in cases 2 and 4 in Table ~\ref{tab:configuration}. Therefore, when fine-tuning larger models with a limited dataset, it is beneficial to utilize weights previously fine-tuned on various data configurations. Conversely, for smaller models, the weight initialization strategy does not significantly impact fine-tuning performance.
 
@@ -36,16 +54,3 @@ In Section ~\ref{sec:pre-fine}, we examine the impact of different weight initia
 
 
 %\subsection{DETR}
-
-% \subsection{How does the model generalization study help in real-world applications?}
-
-
-
-
-
-
-% %Explain the interaction between YOLOv8 and v9: when increasing the number of parameters in V8, the performance is not always improved. Except for the dataset "a1\_t2s",  the peak performance was observed on YOLOv8m which has only 23 millions of parameters. However, In V9, an improvement can be expected even when the parameters are increased to more than 50 million (i.e., YOLOv9e). This could be explained by the fundamental difference of the model architecture.
-
-% %Also, "a1\_t2s" is considered to be the most difficult task among all dataset according to the generalization performance observed in this study. An opposite trend that V9 is not a better model was also observed in this dataset. This outcome might suggest that when the task is too difficult, the superior capability of the model may no longer hold in such case. This reminds the research to not only deploy one model even it is known for the best performance on a public dataset. The generalization performance maybe case-specific.
-
-% %%%%How does the model generalization study help in real-world applications?

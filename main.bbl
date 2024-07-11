@@ -295,13 +295,6 @@ Dataset Ninja.
 \newblock \url{ https://datasetninja.com/opencows2020 }, may 2024.
 \newblock visited on 2024-05-21.
 
-\bibitem{ye2022superanimal}
-Shaokai Ye, Anastasiia Filippova, Jessy Lauer, Steffen Schneider, Maxime Vidal,
-  Tian Qiu, Alexander Mathis, and Mackenzie~Weygandt Mathis.
-\newblock Superanimal pretrained pose estimation models for behavioral
-  analysis.
-\newblock {\em arXiv preprint arXiv:2203.07436}, 2022.
-
 \bibitem{COLODataset2023}
 Colo: A large-scale dataset for conversational question answering over
   knowledge graphs.
