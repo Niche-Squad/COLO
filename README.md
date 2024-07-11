@@ -1,3 +1,3 @@
 # COw LOcalization (COLO) Dataset
 
-![COLO](ms/figure_1.jpg)
+![COLO](figure_1.jpg)
