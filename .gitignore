@@ -15,9 +15,6 @@ demo/
 *.txt
 *.json
 *.png
-*.jpg
-*.JPG
-*.jpeg
 *.gif
 *.bmp
 *.tiff
@@ -28,7 +25,6 @@ demo/
 *.bmp
 *.zip
 *.tar.gz
-*.pdf
 # log
 *.log
 *.err
@@ -64,8 +60,6 @@ lightning_logs/*
 *.out
 **/events.out.tfevents.*
 # images/videos
-*.jpg
-*.jpeg
 *.tar.gz
 # python miscs
 *.pyc
