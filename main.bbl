@@ -339,19 +339,4 @@ Quentin Lhoest, Albert Villanova~del Moral, Yacine Jernite, Abhishek Thakur,
 \newblock Datasets: A community library for natural language processing.
 \newblock \url{https://github.com/huggingface/datasets}, 2021.
 
-\bibitem{notebookcheck_m1_max}
-Andreas Osthoff.
-\newblock Apple’s m1 max gpu is as powerful as an nvidia rtx 2080 desktop gpu
-  and the sony ps5 gaming console.
-\newblock
-  \url{https://www.notebookcheck.net/Apple-s-M1-Max-GPU-is-as-powerful-as-an-Nvidia-RTX-2080-desktop-GPU-and-the-Sony-PS5-gaming-console.573846.0.html#:~:text=Yet\%2C\%20the\%2032\%2Dcore\%20GPU,of\%20battery\%20life\%20as\%20well},
-  2021.
-\newblock Accessed: 2024-07-07.
-
-\bibitem{nvidia_a100}
-NVIDIA Corporation.
-\newblock Nvidia a100 tensor core gpu.
-\newblock \url{https://www.nvidia.com/en-us/data-center/a100/}.
-\newblock Accessed: 2024-07-07.
-
 \end{thebibliography}

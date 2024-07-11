@@ -1,6 +1,6 @@
 \section{Introduction}
 
-\subsection*{Object Detection and Its Applications}
+\subsection*{Object Localization and Its Applications}
 
 Localizing livestock individuals from images or videos has become an essential task in precision livestock farming (PLF) \cite{fernandes2020image}. Such techniques allow farm operators to manage animal well-being and health in real-time, optimizing their resource management and improving sustainability \cite{morrone2022industry, hao2023cattle}. Technically speaking, in the field of computer vision (CV), which is a subfield of artificial intelligence (AI) that focuses on translating visual information into actionable insights, localization tasks can be further categorized into object detection, object segmentation, and pose estimation. Object detection is the simplest form among these tasks, localizing objects of interest by enclosing them within a rectangular bounding box defined by x and y coordinates, pixel width, and pixel height \cite{viola2001rapid}. Successful instances in this category include YOLO (You Only Look Once) \cite{redmon2016you}, Faster R-CNN (Region Convolutional Neural Networks) \cite{girshick2015fast}, and SSD (Single Shot MultiBox Detector) \cite{liu2016ssd}. These models have been adopted and applied by animal scientists for detection in precision livestock farming. For example, a study \cite{yu2022automatic} leveraged the DRN-YOLO model \cite{xu2020improved} to predict the eating behavior of dairy cows. This approach automates the assessment of feeding behavior, a critical indicator of cow health and productivity, and has saved labor efforts in complex farm settings. Another notable work is presented in \cite{nasirahmadi2019deep}, where the authors developed a posture detection system for pigs using deep learning models such as Faster R-CNN, SSD, and R-FCN, coupled with 2D imaging. This system accurately identifies standing and lying postures of pigs under commercial farm settings.
 
@@ -36,7 +36,7 @@ There have been efforts to create public datasets for livestock scenarios. For e
 
 \subsection*{Study Objectives}
 
-This study aims to explore model generalization across varying environmental settings and model complexities within the context of indoor cow localization. It seeks to examine three hypotheses:
+This study aims to explore model generalization across varying environmental settings and model complexities within the context of indoor cow localization. Object detection, being the simplest form of localization, serves as an ideal baseline for extending to more complex tasks such as segmentation and posture estimation. Starting with object detection allows for a clear and foundational understanding of model behavior and performance, which can then inform and enhance the approach to more complex tasks. Consequently, this study examines three hypotheses:
 
 \begin{itemize}
     \item \textbf{Model generalization is equally influenced by changes in lighting conditions and camera angles.} Should camera angles prove more impactful than lighting conditions, it would be advisable to prioritize camera placement when deploying CV models in new environments.
