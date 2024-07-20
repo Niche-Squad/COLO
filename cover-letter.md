@@ -1,8 +1,12 @@
-# Cover letter
+# Cover Letter
 
-Dear Editors, 
+Dear Editors,
 
-I am writing to submit our manuscript titled "A Model Generalization Study in Localizing Indoor Cows with COw LOcalization (COLO) Dataset". Although AI-driven application in agriculture has been widely studied, a common challenges farm operators face is how well the existing models can generalize to their environment. This study use cow localization as a case study to investigate the generalization capabality under different conditions, such as environment lightning, model complexity, and camera view angle. This study also provides a new dataset, COw LOcalization (COLO), which can be used as a benchmark dataset for future research. We believe that this study will be of interest to the readers of Computer and Electronics in Agriculture, and we would be honored if you consider it for publication in your journal.
+I am writing to submit our manuscript titled "A Model Generalization Study in Localizing Indoor Cows with the COw LOcalization (COLO) Dataset." While AI-driven applications in agriculture have been extensively studied, there is a notable gap in evaluating the quality and generalizability of these applications in real-world scenarios. A persistent challenge for farm operators is determining how well existing models can adapt to their specific environments and the additional resources required for this adaptation. 
 
-sincerely,
+Our study aims to address this challenge through a case study focused on cow localization within a free-stall barn setting. We investigate the generalization capabilities of existing models under varying conditions, including environmental lighting, model complexity, and camera view angles. Furthermore, we introduce a new dataset, the COw LOcalization (COLO) dataset, which serves as a benchmark for future research in this domain.
+
+We believe that our findings will be of significant interest to the readers of Computers and Electronics in Agriculture and would be honored if you considered our manuscript for publication in your esteemed journal.
+
+Sincerely,  
 James
