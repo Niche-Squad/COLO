@@ -1,0 +1,29 @@
+\section*{Appendix}
+
+\subsection*{Hyperparameters in Ultralytics library}
+
+The table below show the hyperparameters used in the Ultralytics library for training the models in this study.
+
+\begin{table}[h]
+    \caption{Hyperparameters for the training procedure}
+    \centering
+    \begin{tabular}{lp{0.5\textwidth}l}
+        \toprule
+        Hyperparameters & Description & Value \\
+        \midrule
+        epochs & Number of training epochs & 100 \\
+        batch & Number of images in each batch & 16 \\
+        optimizer & Optimizer used for training & auto \\
+        \text{hsv\_h} & Altering the hue value of the image & 0.015 \\
+        \text{hsv\_s} & Altering the saturation of the image by a fraction & 0.7 \\
+        \text{hsv\_v} & Altering the brightness of the image by a fraction & 0.4 \\
+        translate & Randomly translating the image by a fraction of the image size & 0.1 \\
+        scale & Randomly scaling the image by a fraction of the image size & 0.5 \\
+        fliplr & Randomly flipping the image horizontally with the given probability & 0.5 \\
+        mosaic & Combining four images into one mosaic image with the given probability & 1.0 \\
+        mixup & Randomly mixing up the object instances across multiple images with the given probability & 0.15 \\
+        \text{copy\_paste} & Randomly copying and pasting the object instances across multiple images with the given probability & 0.3 \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:hyperparameters}
+\end{table}

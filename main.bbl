@@ -1,330 +1,174 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{54}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem{fernandes2020image}
-Arthur Francisco~Ara{\'u}jo Fernandes, Jo{\~a}o Ricardo~Rebou{\c{c}}as
-  D{\'o}rea, and Guilherme Jord{\~a}o de~Magalh{\~a}es Rosa.
-\newblock Image analysis and computer vision applications in animal sciences:
-  an overview.
-\newblock {\em Frontiers in Veterinary Science}, 7:551269, 2020.
-
-\bibitem{morrone2022industry}
-Sarah Morrone, Corrado Dimauro, Filippo Gambella, and Maria~Grazia Cappai.
-\newblock Industry 4.0 and precision livestock farming (plf): an up to date
-  overview across animal productions.
-\newblock {\em Sensors}, 22(12):4319, 2022.
-
-\bibitem{hao2023cattle}
-Wangli Hao, Chao Ren, Meng Han, Li~Zhang, Fuzhong Li, and Zhenyu Liu.
-\newblock Cattle body detection based on yolov5-ema for precision livestock
-  farming.
-\newblock {\em Animals}, 13(22):3535, 2023.
-
-\bibitem{viola2001rapid}
-Paul Viola and Michael Jones.
-\newblock Rapid object detection using a boosted cascade of simple features.
-\newblock In {\em Proceedings of the 2001 IEEE computer society conference on
-  computer vision and pattern recognition. CVPR 2001}, volume~1, pages I--I.
-  Ieee, 2001.
-
-\bibitem{redmon2016you}
-Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi.
-\newblock You only look once: Unified, real-time object detection.
-\newblock In {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 779--788, 2016.
-
-\bibitem{girshick2015fast}
-Ross Girshick.
-\newblock Fast r-cnn.
-\newblock In {\em Proceedings of the IEEE international conference on computer
-  vision}, pages 1440--1448, 2015.
-
-\bibitem{liu2016ssd}
-Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,
-  Cheng-Yang Fu, and Alexander~C Berg.
-\newblock Ssd: Single shot multibox detector.
-\newblock In {\em Computer Vision--ECCV 2016: 14th European Conference,
-  Amsterdam, The Netherlands, October 11--14, 2016, Proceedings, Part I 14},
-  pages 21--37. Springer, 2016.
-
-\bibitem{yu2022automatic}
-Zhenwei Yu, Yuehua Liu, Sufang Yu, Ruixue Wang, Zhanhua Song, Yinfa Yan, Fade
-  Li, Zhonghua Wang, and Fuyang Tian.
-\newblock Automatic detection method of dairy cow feeding behaviour based on
-  yolo improved model and edge computing.
-\newblock {\em Sensors}, 22(9):3271, 2022.
-
-\bibitem{xu2020improved}
-Danqing Xu and Yiquan Wu.
-\newblock Improved yolo-v3 with densenet for multi-scale remote sensing target
-  detection.
-\newblock {\em Sensors}, 20(15):4276, 2020.
-
-\bibitem{nasirahmadi2019deep}
-Abozar Nasirahmadi, Barbara Sturm, Sandra Edwards, Knut-H{\aa}kan Jeppsson,
-  Anne-Charlotte Olsson, Simone M{\"u}ller, and Oliver Hensel.
-\newblock Deep learning and machine vision approaches for posture detection of
-  individual pigs.
-\newblock {\em Sensors}, 19(17):3738, 2019.
-
-\bibitem{hariharan2015hypercolumns}
-Bharath Hariharan, Pablo Arbel{\'a}ez, Ross Girshick, and Jitendra Malik.
-\newblock Hypercolumns for object segmentation and fine-grained localization.
-\newblock In {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 447--456, 2015.
-
-\bibitem{he2017mask}
-Kaiming He, Georgia Gkioxari, Piotr Doll{\'a}r, and Ross Girshick.
-\newblock Mask r-cnn.
-\newblock In {\em Proceedings of the IEEE international conference on computer
-  vision}, pages 2961--2969, 2017.
-
-\bibitem{huang2019mask}
-Zhaojin Huang, Lichao Huang, Yongchao Gong, Chang Huang, and Xinggang Wang.
-\newblock Mask scoring r-cnn.
-\newblock In {\em Proceedings of the IEEE/CVF conference on computer vision and
-  pattern recognition}, pages 6409--6418, 2019.
-
-\bibitem{siddique2021u}
-Nahian Siddique, Sidike Paheding, Colin~P Elkin, and Vijay Devabhaktuni.
-\newblock U-net and its variants for medical image segmentation: A review of
-  theory and applications.
-\newblock {\em Ieee Access}, 9:82031--82057, 2021.
-
-\bibitem{noe2022automatic}
-Su~Myat Noe, Thi~Thi Zin, Pyke Tin, and Ikuo Kobayashi.
-\newblock Automatic detection and tracking of mounting behavior in cattle using
-  a deep learning-based instance segmentation model.
-\newblock {\em Int. J. Innov. Comput. Inf. Control}, 18(1):211--220, 2022.
-
-\bibitem{tu2021automatic}
-Shuqin Tu, Weijun Yuan, Yun Liang, Fan Wang, and Hua Wan.
-\newblock Automatic detection and segmentation for group-housed pigs based on
-  pigms r-cnn.
-\newblock {\em Sensors}, 21(9):3251, 2021.
-
-\bibitem{li2021practices}
-Guoming Li, Yanbo Huang, Zhiqian Chen, Gary~D Chesser~Jr, Joseph~L Purswell,
-  John Linhoss, and Yang Zhao.
-\newblock Practices and applications of convolutional neural network-based
-  computer vision systems in animal farming: A review.
-\newblock {\em Sensors}, 21(4):1492, 2021.
-
-\bibitem{lin2014microsoft}
-Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva
-  Ramanan, Piotr Doll{\'a}r, and C~Lawrence Zitnick.
-\newblock Microsoft coco: Common objects in context.
-\newblock In {\em Computer Vision--ECCV 2014: 13th European Conference, Zurich,
-  Switzerland, September 6-12, 2014, Proceedings, Part V 13}, pages 740--755.
-  Springer, 2014.
-
-\bibitem{han2021pre}
-Xu~Han, Zhengyan Zhang, Ning Ding, Yuxian Gu, Xiao Liu, Yuqi Huo, Jiezhong Qiu,
-  Yuan Yao, Ao~Zhang, Liang Zhang, et~al.
-\newblock Pre-trained models: Past, present and future.
-\newblock {\em AI Open}, 2:225--250, 2021.
-
-\bibitem{guirguis2022cfa}
-Karim Guirguis, Ahmed Hendawy, George Eskandar, Mohamed Abdelsamad, Matthias
-  Kayser, and J{\"u}rgen Beyerer.
-\newblock Cfa: Constraint-based finetuning approach for generalized few-shot
-  object detection.
-\newblock In {\em Proceedings of the IEEE/CVF conference on computer vision and
-  pattern recognition}, pages 4039--4049, 2022.
-
-\bibitem{gupta2023novel}
-Chhaya Gupta, Nasib~Singh Gill, Preeti Gulia, and Jyotir~Moy Chatterjee.
-\newblock A novel finetuned yolov6 transfer learning model for real-time object
-  detection.
-\newblock {\em Journal of Real-Time Image Processing}, 20(3):42, 2023.
-
-\bibitem{zin_automatic_2020}
-Thi~Thi Zin, Moe~Zet Pwint, Pann~Thinzar Seint, Shin Thant, Shuhei Misawa,
-  Kosuke Sumi, and Kyohiro Yoshida.
-\newblock Automatic {Cow} {Location} {Tracking} {System} {Using} {Ear} {Tag}
-  {Visual} {Analysis}.
-\newblock {\em Sensors}, 20(12):3564, January 2020.
-\newblock Number: 12 Publisher: Multidisciplinary Digital Publishing Institute.
-
-\bibitem{ultralytics2023datasets}
-Ultralytics.
-\newblock Ultralytics datasets documentation.
-\newblock \url{https://docs.ultralytics.com/datasets/detect/}, 2023.
-
-\bibitem{labelme2023}
-{Massachusetts Institute of Technology}.
-\newblock Labelme: Image annotation tool.
-\newblock \url{http://labelme.csail.mit.edu/Release3.0/}, 2023.
-
-\bibitem{cvat2023}
-{OpenCV}.
-\newblock Cvat: Computer vision annotation tool.
-\newblock \url{https://www.cvat.ai/}, 2023.
-
-\bibitem{roboflow2023}
-{Roboflow}.
-\newblock Roboflow: Organize, annotate, and improve machine learning datasets.
-\newblock \url{https://roboflow.com/}, 2023.
-
-\bibitem{hu2021model}
-Xia Hu, Lingyang Chu, Jian Pei, Weiqing Liu, and Jiang Bian.
-\newblock Model complexity of deep learning: A survey.
-\newblock {\em Knowledge and Information Systems}, 63:2585--2619, 2021.
-
-\bibitem{justus2018predicting}
-Daniel Justus, John Brennan, Stephen Bonner, and Andrew~Stephen McGough.
-\newblock Predicting the computational cost of deep learning models.
-\newblock In {\em 2018 IEEE international conference on big data (Big Data)},
-  pages 3873--3882. IEEE, 2018.
-
-\bibitem{simonyan2014very}
-Karen Simonyan and Andrew Zisserman.
-\newblock Very deep convolutional networks for large-scale image recognition.
-\newblock {\em arXiv preprint arXiv:1409.1556}, 2014.
-
-\bibitem{he2016deep}
-Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
-\newblock Deep residual learning for image recognition.
-\newblock In {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 770--778, 2016.
-
-\bibitem{ultralyticsYOLOv8}
-Ultralytics.
-\newblock {Y}{O}{L}{O}v8 --- docs.ultralytics.com.
-\newblock \url{https://docs.ultralytics.com/models/yolov8/#overview}, Januray
-  2023.
-
-\bibitem{wang2024yolov9}
-Chien-Yao Wang and Hong-Yuan~Mark Liao.
-\newblock {YOLOv9}: Learning what you want to learn using programmable gradient
-  information.
-\newblock 2024.
-
-\bibitem{Jocher2020YOLOv5}
-Glenn Jocher.
-\newblock {YOLOv5 by Ultralytics}.
-\newblock \url{https://github.com/ultralytics/yolov5}, 2020.
-\newblock Accessed on: 28 February 2023.
-
-\bibitem{elfwing2018sigmoid}
-Stefan Elfwing, Eiji Uchibe, and Kenji Doya.
-\newblock Sigmoid-weighted linear units for neural network function
-  approximation in reinforcement learning.
-\newblock {\em Neural networks}, 107:3--11, 2018.
-
-\bibitem{targ2016resnet}
-Sasha Targ, Diogo Almeida, and Kevin Lyman.
-\newblock Resnet in resnet: Generalizing residual architectures.
-\newblock {\em arXiv preprint arXiv:1603.08029}, 2016.
-
-\bibitem{law2018cornernet}
-H.~Law and J.~Deng.
-\newblock Cornernet: Detecting objects as paired keypoints.
-\newblock In {\em Proceedings of the European Conference on Computer Vision
-  (ECCV)}, pages 734--750, Munich, Germany, 8--14 September 2018.
-
-\bibitem{duan2019centernet}
-K.~Duan, S.~Bai, L.~Xie, H.~Qi, Q.~Huang, and Q.~Tian.
-\newblock Centernet: Keypoint triplets for object detection.
-\newblock In {\em Proceedings of the IEEE/CVF International Conference on
-  Computer Vision}, pages 6569--6578, Seoul, Republic of Korea, 27 October--2
-  November 2019.
-
-\bibitem{tian2019fcos}
-Z.~Tian, C.~Shen, H.~Chen, and T.~He.
-\newblock Fcos: Fully convolutional one-stage object detection.
-\newblock In {\em Proceedings of the IEEE/CVF International Conference on
-  Computer Vision}, pages 9627--9636, Seoul, Republic of Korea, 27 October--2
-  November 2019.
-
-\bibitem{tishby2015deep}
-Naftali Tishby and Noga Zaslavsky.
-\newblock Deep learning and the information bottleneck principle.
-\newblock In {\em 2015 ieee information theory workshop (itw)}, pages 1--5.
-  IEEE, 2015.
-
-\bibitem{tishby2000information}
-Naftali Tishby, Fernando~C Pereira, and William Bialek.
-\newblock The information bottleneck method.
-\newblock {\em arXiv preprint physics/0004057}, 2000.
-
-\bibitem{deng2009imagenet}
-Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li~Fei-Fei.
-\newblock Imagenet: A large-scale hierarchical image database.
-\newblock In {\em 2009 IEEE conference on computer vision and pattern
-  recognition}, pages 248--255. Ieee, 2009.
-
-\bibitem{krizhevsky2017imagenet}
-Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
-\newblock Imagenet classification with deep convolutional neural networks.
-\newblock {\em Communications of the ACM}, 60(6):84--90, 2017.
-
-\bibitem{karen2014very}
-Simonyan Karen.
-\newblock Very deep convolutional networks for large-scale image recognition.
-\newblock {\em arXiv preprint arXiv: 1409.1556}, 2014.
-
-\bibitem{szegedy2015going}
-Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed, Dragomir
-  Anguelov, Dumitru Erhan, Vincent Vanhoucke, and Andrew Rabinovich.
-\newblock Going deeper with convolutions.
-\newblock In {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 1--9, 2015.
-
-\bibitem{huang2017densely}
-Gao Huang, Zhuang Liu, Laurens Van Der~Maaten, and Kilian~Q Weinberger.
-\newblock Densely connected convolutional networks.
-\newblock In {\em Proceedings of the IEEE conference on computer vision and
-  pattern recognition}, pages 4700--4708, 2017.
-
-\bibitem{ong2023cattleeyeview}
-Kian~Eng Ong, Sivaji Retta, Ramarajulu Srinivasan, Shawn Tan, and Jun Liu.
-\newblock Cattleeyeview: A multi-task top-down view cattle dataset for smarter
-  precision livestock farming.
-\newblock In {\em 2023 IEEE International Conference on Visual Communications
-  and Image Processing (VCIP)}, pages 1--5. IEEE, 2023.
-
-\bibitem{t2020long}
-Eric T.~Psota, Ty~Schmidt, Benny Mote, and Lance C.~P{\'e}rez.
-\newblock Long-term tracking of group-housed livestock using keypoint detection
-  and map estimation for individual animal identification.
-\newblock {\em Sensors}, 20(13):3670, 2020.
-
-\bibitem{visualization-tools-for-opencows2020-dataset}
-Dataset Ninja.
-\newblock Visualization tools for opencow2020 dataset.
-\newblock \url{ https://datasetninja.com/opencows2020 }, may 2024.
-\newblock visited on 2024-05-21.
-
-\bibitem{COLODataset2023}
+\bibitem[COL(2023)]{COLODataset2023}
 Colo: A large-scale dataset for conversational question answering over
   knowledge graphs.
 \newblock \url{https://huggingface.co/datasets/Niche-Squad/COLO}, 2023.
 \newblock Accessed: 2024-04-09.
 
-\bibitem{greif_dgreifring_2024}
-Dusty Greif.
-\newblock dgreif/ring, April 2024.
-\newblock original-date: 2018-10-12T22:53:01Z.
-
-\bibitem{ultralytics}
-Ultralytics.
-\newblock Ultralytics models documentation.
-\newblock \url{https://docs.ultralytics.com/models/}.
-\newblock Accessed: 2024-05-21.
-
-\bibitem{v8yaml}
+\bibitem[v8y(2023)]{v8yaml}
 Ultralytics v8 models.
 \newblock
   \url{https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/models/v8/yolov8.yaml},
   2023.
 
-\bibitem{v9yaml}
+\bibitem[v9y(2023)]{v9yaml}
 Ultralytics v9 models.
 \newblock
   \url{https://github.com/ultralytics/ultralytics/tree/main/ultralytics/cfg/models/v9},
   2023.
 
-\bibitem{datasets}
+\bibitem[Deng et~al.(2009)Deng, Dong, Socher, Li, Li, and
+  Fei-Fei]{deng2009imagenet}
+Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li~Fei-Fei.
+\newblock Imagenet: A large-scale hierarchical image database.
+\newblock In \emph{2009 IEEE conference on computer vision and pattern
+  recognition}, pages 248--255. Ieee, 2009.
+
+\bibitem[Duan et~al.(2019)Duan, Bai, Xie, Qi, Huang, and
+  Tian]{duan2019centernet}
+K.~Duan, S.~Bai, L.~Xie, H.~Qi, Q.~Huang, and Q.~Tian.
+\newblock Centernet: Keypoint triplets for object detection.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pages 6569--6578, Seoul, Republic of Korea, 27 October--2
+  November 2019.
+
+\bibitem[Elfwing et~al.(2018)Elfwing, Uchibe, and Doya]{elfwing2018sigmoid}
+Stefan Elfwing, Eiji Uchibe, and Kenji Doya.
+\newblock Sigmoid-weighted linear units for neural network function
+  approximation in reinforcement learning.
+\newblock \emph{Neural networks}, 107:\penalty0 3--11, 2018.
+
+\bibitem[Fernandes et~al.(2020)Fernandes, D{\'o}rea, and
+  Rosa]{fernandes2020image}
+Arthur Francisco~Ara{\'u}jo Fernandes, Jo{\~a}o Ricardo~Rebou{\c{c}}as
+  D{\'o}rea, and Guilherme Jord{\~a}o de~Magalh{\~a}es Rosa.
+\newblock Image analysis and computer vision applications in animal sciences:
+  an overview.
+\newblock \emph{Frontiers in Veterinary Science}, 7:\penalty0 551269, 2020.
+
+\bibitem[Girshick(2015)]{girshick2015fast}
+Ross Girshick.
+\newblock Fast r-cnn.
+\newblock In \emph{Proceedings of the IEEE international conference on computer
+  vision}, pages 1440--1448, 2015.
+
+\bibitem[Greif(2024)]{greif_dgreifring_2024}
+Dusty Greif.
+\newblock dgreif/ring, April 2024.
+\newblock URL \url{https://github.com/dgreif/ring}.
+\newblock original-date: 2018-10-12T22:53:01Z.
+
+\bibitem[Guirguis et~al.(2022)Guirguis, Hendawy, Eskandar, Abdelsamad, Kayser,
+  and Beyerer]{guirguis2022cfa}
+Karim Guirguis, Ahmed Hendawy, George Eskandar, Mohamed Abdelsamad, Matthias
+  Kayser, and J{\"u}rgen Beyerer.
+\newblock Cfa: Constraint-based finetuning approach for generalized few-shot
+  object detection.
+\newblock In \emph{Proceedings of the IEEE/CVF conference on computer vision
+  and pattern recognition}, pages 4039--4049, 2022.
+
+\bibitem[Gupta et~al.(2023)Gupta, Gill, Gulia, and Chatterjee]{gupta2023novel}
+Chhaya Gupta, Nasib~Singh Gill, Preeti Gulia, and Jyotir~Moy Chatterjee.
+\newblock A novel finetuned yolov6 transfer learning model for real-time object
+  detection.
+\newblock \emph{Journal of Real-Time Image Processing}, 20\penalty0
+  (3):\penalty0 42, 2023.
+
+\bibitem[Han et~al.(2021)Han, Zhang, Ding, Gu, Liu, Huo, Qiu, Yao, Zhang,
+  Zhang, et~al.]{han2021pre}
+Xu~Han, Zhengyan Zhang, Ning Ding, Yuxian Gu, Xiao Liu, Yuqi Huo, Jiezhong Qiu,
+  Yuan Yao, Ao~Zhang, Liang Zhang, et~al.
+\newblock Pre-trained models: Past, present and future.
+\newblock \emph{AI Open}, 2:\penalty0 225--250, 2021.
+
+\bibitem[Hao et~al.(2023)Hao, Ren, Han, Zhang, Li, and Liu]{hao2023cattle}
+Wangli Hao, Chao Ren, Meng Han, Li~Zhang, Fuzhong Li, and Zhenyu Liu.
+\newblock Cattle body detection based on yolov5-ema for precision livestock
+  farming.
+\newblock \emph{Animals}, 13\penalty0 (22):\penalty0 3535, 2023.
+
+\bibitem[Hariharan et~al.(2015)Hariharan, Arbel{\'a}ez, Girshick, and
+  Malik]{hariharan2015hypercolumns}
+Bharath Hariharan, Pablo Arbel{\'a}ez, Ross Girshick, and Jitendra Malik.
+\newblock Hypercolumns for object segmentation and fine-grained localization.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 447--456, 2015.
+
+\bibitem[He et~al.(2016)He, Zhang, Ren, and Sun]{he2016deep}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 770--778, 2016.
+
+\bibitem[He et~al.(2017)He, Gkioxari, Doll{\'a}r, and Girshick]{he2017mask}
+Kaiming He, Georgia Gkioxari, Piotr Doll{\'a}r, and Ross Girshick.
+\newblock Mask r-cnn.
+\newblock In \emph{Proceedings of the IEEE international conference on computer
+  vision}, pages 2961--2969, 2017.
+
+\bibitem[Hu et~al.(2021)Hu, Chu, Pei, Liu, and Bian]{hu2021model}
+Xia Hu, Lingyang Chu, Jian Pei, Weiqing Liu, and Jiang Bian.
+\newblock Model complexity of deep learning: A survey.
+\newblock \emph{Knowledge and Information Systems}, 63:\penalty0 2585--2619,
+  2021.
+
+\bibitem[Huang et~al.(2017)Huang, Liu, Van Der~Maaten, and
+  Weinberger]{huang2017densely}
+Gao Huang, Zhuang Liu, Laurens Van Der~Maaten, and Kilian~Q Weinberger.
+\newblock Densely connected convolutional networks.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 4700--4708, 2017.
+
+\bibitem[Huang et~al.(2019)Huang, Huang, Gong, Huang, and Wang]{huang2019mask}
+Zhaojin Huang, Lichao Huang, Yongchao Gong, Chang Huang, and Xinggang Wang.
+\newblock Mask scoring r-cnn.
+\newblock In \emph{Proceedings of the IEEE/CVF conference on computer vision
+  and pattern recognition}, pages 6409--6418, 2019.
+
+\bibitem[Jocher(2020)]{Jocher2020YOLOv5}
+Glenn Jocher.
+\newblock {YOLOv5 by Ultralytics}.
+\newblock \url{https://github.com/ultralytics/yolov5}, 2020.
+\newblock Accessed on: 28 February 2023.
+
+\bibitem[Justus et~al.(2018)Justus, Brennan, Bonner, and
+  McGough]{justus2018predicting}
+Daniel Justus, John Brennan, Stephen Bonner, and Andrew~Stephen McGough.
+\newblock Predicting the computational cost of deep learning models.
+\newblock In \emph{2018 IEEE international conference on big data (Big Data)},
+  pages 3873--3882. IEEE, 2018.
+
+\bibitem[Karen(2014)]{karen2014very}
+Simonyan Karen.
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock \emph{arXiv preprint arXiv: 1409.1556}, 2014.
+
+\bibitem[Krizhevsky et~al.(2017)Krizhevsky, Sutskever, and
+  Hinton]{krizhevsky2017imagenet}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock \emph{Communications of the ACM}, 60\penalty0 (6):\penalty0 84--90,
+  2017.
+
+\bibitem[Law and Deng(2018)]{law2018cornernet}
+H.~Law and J.~Deng.
+\newblock Cornernet: Detecting objects as paired keypoints.
+\newblock In \emph{Proceedings of the European Conference on Computer Vision
+  (ECCV)}, pages 734--750, Munich, Germany, 8--14 September 2018.
+
+\bibitem[Lhoest et~al.(2021)Lhoest, Villanova~del Moral, Jernite, Thakur, von
+  Platen, Patil, Chaumond, Drame, Plu, Tunstall, Davison, {\v{C}}uklina,
+  Brandeis, Le~Scao, Schmid, Gugger, Delangue, Matussi{\`{e}}re, Debut,
+  Ben-Ami, Filippova, d'Hoffschmidt, G{\'{e}}rard, Lane, Ansell, Buitinck,
+  Esposito, Raison, Klein, Nguyen, Mikami, Sanh, Chaudhary, Patry, Chang,
+  Froment, Buhmann, Malartic, Winschel, Watson, Pradeep, Chhablani, Rohrbach,
+  Jenny, Bolton, Phang, Löw, Rush, and Wolf]{datasets}
 Quentin Lhoest, Albert Villanova~del Moral, Yacine Jernite, Abhishek Thakur,
   Patrick von Platen, Suraj Patil, Julien Chaumond, Mariama Drame, Julien Plu,
   Lewis Tunstall, Joe Davison, Marija {\v{C}}uklina, Simon Brandeis, Teven
@@ -338,5 +182,202 @@ Quentin Lhoest, Albert Villanova~del Moral, Yacine Jernite, Abhishek Thakur,
   Jenny, John Bolton, Jason Phang, Theo Löw, Alexander Rush, and Thomas Wolf.
 \newblock Datasets: A community library for natural language processing.
 \newblock \url{https://github.com/huggingface/datasets}, 2021.
+
+\bibitem[Li et~al.(2021)Li, Huang, Chen, Chesser~Jr, Purswell, Linhoss, and
+  Zhao]{li2021practices}
+Guoming Li, Yanbo Huang, Zhiqian Chen, Gary~D Chesser~Jr, Joseph~L Purswell,
+  John Linhoss, and Yang Zhao.
+\newblock Practices and applications of convolutional neural network-based
+  computer vision systems in animal farming: A review.
+\newblock \emph{Sensors}, 21\penalty0 (4):\penalty0 1492, 2021.
+
+\bibitem[Lin et~al.(2014)Lin, Maire, Belongie, Hays, Perona, Ramanan,
+  Doll{\'a}r, and Zitnick]{lin2014microsoft}
+Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva
+  Ramanan, Piotr Doll{\'a}r, and C~Lawrence Zitnick.
+\newblock Microsoft coco: Common objects in context.
+\newblock In \emph{Computer Vision--ECCV 2014: 13th European Conference,
+  Zurich, Switzerland, September 6-12, 2014, Proceedings, Part V 13}, pages
+  740--755. Springer, 2014.
+
+\bibitem[Liu et~al.(2016)Liu, Anguelov, Erhan, Szegedy, Reed, Fu, and
+  Berg]{liu2016ssd}
+Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,
+  Cheng-Yang Fu, and Alexander~C Berg.
+\newblock Ssd: Single shot multibox detector.
+\newblock In \emph{Computer Vision--ECCV 2016: 14th European Conference,
+  Amsterdam, The Netherlands, October 11--14, 2016, Proceedings, Part I 14},
+  pages 21--37. Springer, 2016.
+
+\bibitem[{Massachusetts Institute of Technology}(2023)]{labelme2023}
+{Massachusetts Institute of Technology}.
+\newblock Labelme: Image annotation tool.
+\newblock \url{http://labelme.csail.mit.edu/Release3.0/}, 2023.
+
+\bibitem[Morrone et~al.(2022)Morrone, Dimauro, Gambella, and
+  Cappai]{morrone2022industry}
+Sarah Morrone, Corrado Dimauro, Filippo Gambella, and Maria~Grazia Cappai.
+\newblock Industry 4.0 and precision livestock farming (plf): an up to date
+  overview across animal productions.
+\newblock \emph{Sensors}, 22\penalty0 (12):\penalty0 4319, 2022.
+
+\bibitem[Nasirahmadi et~al.(2019)Nasirahmadi, Sturm, Edwards, Jeppsson, Olsson,
+  M{\"u}ller, and Hensel]{nasirahmadi2019deep}
+Abozar Nasirahmadi, Barbara Sturm, Sandra Edwards, Knut-H{\aa}kan Jeppsson,
+  Anne-Charlotte Olsson, Simone M{\"u}ller, and Oliver Hensel.
+\newblock Deep learning and machine vision approaches for posture detection of
+  individual pigs.
+\newblock \emph{Sensors}, 19\penalty0 (17):\penalty0 3738, 2019.
+
+\bibitem[Ninja(2024)]{visualization-tools-for-opencows2020-dataset}
+Dataset Ninja.
+\newblock Visualization tools for opencow2020 dataset.
+\newblock \url{ https://datasetninja.com/opencows2020 }, may 2024.
+\newblock URL \url{https://datasetninja.com/opencows2020}.
+\newblock visited on 2024-05-21.
+
+\bibitem[Noe et~al.(2022)Noe, Zin, Tin, and Kobayashi]{noe2022automatic}
+Su~Myat Noe, Thi~Thi Zin, Pyke Tin, and Ikuo Kobayashi.
+\newblock Automatic detection and tracking of mounting behavior in cattle using
+  a deep learning-based instance segmentation model.
+\newblock \emph{Int. J. Innov. Comput. Inf. Control}, 18\penalty0 (1):\penalty0
+  211--220, 2022.
+
+\bibitem[Ong et~al.(2023)Ong, Retta, Srinivasan, Tan, and
+  Liu]{ong2023cattleeyeview}
+Kian~Eng Ong, Sivaji Retta, Ramarajulu Srinivasan, Shawn Tan, and Jun Liu.
+\newblock Cattleeyeview: A multi-task top-down view cattle dataset for smarter
+  precision livestock farming.
+\newblock In \emph{2023 IEEE International Conference on Visual Communications
+  and Image Processing (VCIP)}, pages 1--5. IEEE, 2023.
+
+\bibitem[{OpenCV}(2023)]{cvat2023}
+{OpenCV}.
+\newblock Cvat: Computer vision annotation tool.
+\newblock \url{https://www.cvat.ai/}, 2023.
+
+\bibitem[Redmon et~al.(2016)Redmon, Divvala, Girshick, and
+  Farhadi]{redmon2016you}
+Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi.
+\newblock You only look once: Unified, real-time object detection.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 779--788, 2016.
+
+\bibitem[{Roboflow}(2023)]{roboflow2023}
+{Roboflow}.
+\newblock Roboflow: Organize, annotate, and improve machine learning datasets.
+\newblock \url{https://roboflow.com/}, 2023.
+
+\bibitem[Siddique et~al.(2021)Siddique, Paheding, Elkin, and
+  Devabhaktuni]{siddique2021u}
+Nahian Siddique, Sidike Paheding, Colin~P Elkin, and Vijay Devabhaktuni.
+\newblock U-net and its variants for medical image segmentation: A review of
+  theory and applications.
+\newblock \emph{Ieee Access}, 9:\penalty0 82031--82057, 2021.
+
+\bibitem[Simonyan and Zisserman(2014)]{simonyan2014very}
+Karen Simonyan and Andrew Zisserman.
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock \emph{arXiv preprint arXiv:1409.1556}, 2014.
+
+\bibitem[Szegedy et~al.(2015)Szegedy, Liu, Jia, Sermanet, Reed, Anguelov,
+  Erhan, Vanhoucke, and Rabinovich]{szegedy2015going}
+Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed, Dragomir
+  Anguelov, Dumitru Erhan, Vincent Vanhoucke, and Andrew Rabinovich.
+\newblock Going deeper with convolutions.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 1--9, 2015.
+
+\bibitem[T.~Psota et~al.(2020)T.~Psota, Schmidt, Mote, and
+  C.~P{\'e}rez]{t2020long}
+Eric T.~Psota, Ty~Schmidt, Benny Mote, and Lance C.~P{\'e}rez.
+\newblock Long-term tracking of group-housed livestock using keypoint detection
+  and map estimation for individual animal identification.
+\newblock \emph{Sensors}, 20\penalty0 (13):\penalty0 3670, 2020.
+
+\bibitem[Targ et~al.(2016)Targ, Almeida, and Lyman]{targ2016resnet}
+Sasha Targ, Diogo Almeida, and Kevin Lyman.
+\newblock Resnet in resnet: Generalizing residual architectures.
+\newblock \emph{arXiv preprint arXiv:1603.08029}, 2016.
+
+\bibitem[Tian et~al.(2019)Tian, Shen, Chen, and He]{tian2019fcos}
+Z.~Tian, C.~Shen, H.~Chen, and T.~He.
+\newblock Fcos: Fully convolutional one-stage object detection.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pages 9627--9636, Seoul, Republic of Korea, 27 October--2
+  November 2019.
+
+\bibitem[Tishby and Zaslavsky(2015)]{tishby2015deep}
+Naftali Tishby and Noga Zaslavsky.
+\newblock Deep learning and the information bottleneck principle.
+\newblock In \emph{2015 ieee information theory workshop (itw)}, pages 1--5.
+  IEEE, 2015.
+
+\bibitem[Tishby et~al.(2000)Tishby, Pereira, and Bialek]{tishby2000information}
+Naftali Tishby, Fernando~C Pereira, and William Bialek.
+\newblock The information bottleneck method.
+\newblock \emph{arXiv preprint physics/0004057}, 2000.
+
+\bibitem[Tu et~al.(2021)Tu, Yuan, Liang, Wang, and Wan]{tu2021automatic}
+Shuqin Tu, Weijun Yuan, Yun Liang, Fan Wang, and Hua Wan.
+\newblock Automatic detection and segmentation for group-housed pigs based on
+  pigms r-cnn.
+\newblock \emph{Sensors}, 21\penalty0 (9):\penalty0 3251, 2021.
+
+\bibitem[Ultralytics()]{ultralytics}
+Ultralytics.
+\newblock Ultralytics models documentation.
+\newblock \url{https://docs.ultralytics.com/models/}.
+\newblock Accessed: 2024-05-21.
+
+\bibitem[Ultralytics(2023)]{ultralytics2023datasets}
+Ultralytics.
+\newblock Ultralytics datasets documentation.
+\newblock \url{https://docs.ultralytics.com/datasets/detect/}, 2023.
+
+\bibitem[Ultralytics(Januray 2023)]{ultralyticsYOLOv8}
+Ultralytics.
+\newblock {Y}{O}{L}{O}v8 --- docs.ultralytics.com.
+\newblock \url{https://docs.ultralytics.com/models/yolov8/#overview}, Januray
+  2023.
+
+\bibitem[Viola and Jones(2001)]{viola2001rapid}
+Paul Viola and Michael Jones.
+\newblock Rapid object detection using a boosted cascade of simple features.
+\newblock In \emph{Proceedings of the 2001 IEEE computer society conference on
+  computer vision and pattern recognition. CVPR 2001}, volume~1, pages I--I.
+  Ieee, 2001.
+
+\bibitem[Wang and Liao(2024)]{wang2024yolov9}
+Chien-Yao Wang and Hong-Yuan~Mark Liao.
+\newblock {YOLOv9}: Learning what you want to learn using programmable gradient
+  information.
+\newblock 2024.
+
+\bibitem[Xu and Wu(2020)]{xu2020improved}
+Danqing Xu and Yiquan Wu.
+\newblock Improved yolo-v3 with densenet for multi-scale remote sensing target
+  detection.
+\newblock \emph{Sensors}, 20\penalty0 (15):\penalty0 4276, 2020.
+
+\bibitem[Yu et~al.(2022)Yu, Liu, Yu, Wang, Song, Yan, Li, Wang, and
+  Tian]{yu2022automatic}
+Zhenwei Yu, Yuehua Liu, Sufang Yu, Ruixue Wang, Zhanhua Song, Yinfa Yan, Fade
+  Li, Zhonghua Wang, and Fuyang Tian.
+\newblock Automatic detection method of dairy cow feeding behaviour based on
+  yolo improved model and edge computing.
+\newblock \emph{Sensors}, 22\penalty0 (9):\penalty0 3271, 2022.
+
+\bibitem[Zin et~al.(2020)Zin, Pwint, Seint, Thant, Misawa, Sumi, and
+  Yoshida]{zin_automatic_2020}
+Thi~Thi Zin, Moe~Zet Pwint, Pann~Thinzar Seint, Shin Thant, Shuhei Misawa,
+  Kosuke Sumi, and Kyohiro Yoshida.
+\newblock Automatic {Cow} {Location} {Tracking} {System} {Using} {Ear} {Tag}
+  {Visual} {Analysis}.
+\newblock \emph{Sensors}, 20\penalty0 (12):\penalty0 3564, January 2020.
+\newblock ISSN 1424-8220.
+\newblock \doi{10.3390/s20123564}.
+\newblock URL \url{https://www.mdpi.com/1424-8220/20/12/3564}.
+\newblock Number: 12 Publisher: Multidisciplinary Digital Publishing Institute.
 
 \end{thebibliography}
