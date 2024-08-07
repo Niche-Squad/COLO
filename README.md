@@ -1,3 +1,5 @@
 # COw LOcalization (COLO) Dataset
 
-![COLO](ms/figure_1.jpg)
+[Download the dataset](https://github.com/Niche-Squad/COLO/releases/tag/v1.0.0)
+
+![image](cover.jpg)
